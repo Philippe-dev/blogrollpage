@@ -1,16 +1,23 @@
 <?php
-/* This program is free software. It comes without any warranty, to
-     * the extent permitted by applicable law. You can redistribute it
-     * and/or modify it under the terms of the Do What The Fuck You Want
-     * To Public License, Version 2, as published by Sam Hocevar. See
-     * the LICENSE file or http://www.wtfpl.net/ for more details. */
-
-if (!defined('DC_RC_PATH')) { return; }
-
+/**
+ * @brief blogroll, a plugin for Dotclear 2
+ *
+ * @package Dotclear
+ * @subpackage Plugins
+ *
+ * @author Simon Richard and contributors
+ *
+ * @copyright DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE http://www.wtfpl.net/
+ */
 $this->registerModule(
-    /* Name */				"Blogroll Page",
-    /* Description*/		"Show your blogroll on a dedicated page",
-    /* Author */			"Simon Richard",
-    /* Version */			'2',
-    /* Permissions */		'blogroll'
+    'Blogroll Page',
+    'Show your blogroll on a dedicated page',
+    'Simon Richard and contributors',
+    '3.0',
+    [
+        'requires'    => [['core', '2.30']],
+        'permissions' => 'My',
+        'type'        => 'plugin',
+        'support'     => 'https://github.com/Philippe-dev/blogrollpage',
+    ]
 );
