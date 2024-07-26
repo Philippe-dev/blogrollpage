@@ -1,17 +1,28 @@
 <?php
-/* This program is free software. It comes without any warranty, to
-     * the extent permitted by applicable law. You can redistribute it
-     * and/or modify it under the terms of the Do What The Fuck You Want
-     * To Public License, Version 2, as published by Sam Hocevar. See
-     * the LICENSE file or http://www.wtfpl.net/ for more details. */
+/**
+ * @brief blogroll, a plugin for Dotclear 2
+ *
+ * @package Dotclear
+ * @subpackage Plugins
+ *
+ * @author Simon Richard and contributors
+ *
+ * @copyright DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE http://www.wtfpl.net/
+ */
 
-if (!defined('DC_RC_PATH')) { return; }
+declare(strict_types=1);
 
-abstract class widgetsBlogrollPage
+namespace Dotclear\Plugin\blogrollpage;
+
+use Dotclear\Plugin\widgets\WidgetsStack;
+
+class Widgets
 {
-    public static function initWidgets($w)
+    public static function initWidgets(WidgetsStack $w): string
     {
-        $br = new dcBlogroll($GLOBALS['core']->blog);
+        
+
+        $br = new Blogroll(App::blog());
         $h = $br->getLinksHierarchy($br->getLinks());
         $h = array_keys($h);
         $categories = array();
@@ -44,14 +55,17 @@ abstract class widgetsBlogrollPage
 
     public static function getWidget($w)
     {
-        global $core;
-        if (($w->homeonly == 1 && $core->url->type != 'default') ||
-            ($w->homeonly == 2 && $core->url->type == 'default')) {
-            return;
+        
+        if ($w->offline) {
+            return '';
+        }
+
+        if (($w->homeonly == 1 && !App::url()->isHome(App::url()->getType())) || ($w->homeonly == 2 && App::url()->isHome(App::url()->getType()))) {
+            return '';
         }
 
         // Can't link to blogroll page if blogroll page disabled
-        if (!$core->blog->settings->blogrollpage->blogrollpage_enabled) $w->link_target = '/brp-none/';
+        if (!App::blog()->settings()->blogrollpage->blogrollpage_enabled) $w->link_target = '/brp-none/';
         if ($w->link_target == '/brp-none/' && $w->random_category == '/brp-none/') return;
 
         // Generates blogroll page URL if needed
@@ -65,10 +79,10 @@ abstract class widgetsBlogrollPage
         if ($w->random_category != '/brp-bone/') {
 			if ($w->random_category == '/brp-all/') $w->random_category = '';
 			
-            $links = functionsBlogrollPage::getBlogroll($w->random_category,$w->random_number);
+            $links = FrontendUrl::getBlogroll($w->random_category,$w->random_number);
             $res .= '<ul>';
             foreach ($links as $link) {
-                $res .= '<li>'.functionsBlogrollPage::makeLink($link,$w->new_window).'</li>';
+                $res .= '<li>'.Frontend::makeLink($link,$w->new_window).'</li>';
             }
             $res .= '</ul>';
 		}
@@ -81,3 +95,6 @@ abstract class widgetsBlogrollPage
 
     }
 }
+
+
+
