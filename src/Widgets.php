@@ -41,16 +41,18 @@ class Widgets
 					
         $cat_combo = $target_combo;
 
-        $w->create('blogrollpage',__('Blogroll page'),array('widgetsBlogrollPage','getWidget'),null,'Blogroll page and random links');
-        $w->blogrollpage->setting('title',__('Title (optional)'),__('Links'));
-        $w->blogrollpage->setting('random_category',__('Show random links:'),'/brp-all/','combo',$cat_combo);
-        $w->blogrollpage->setting('random_number',__('Number of links:'),5);
-        $w->blogrollpage->setting('new_window',__('Open random links in new window'),0,'check');
-        $w->blogrollpage->setting('link_title',__('Link to blogroll page title:'),__('More links...'));
-        $w->blogrollpage->setting('link_target',__('Link target:'),'/brp-all/','combo',$target_combo);
-        $w->blogrollpage->setting('homeonly',__('Display on:'),0,'combo',array(__('All pages') => 0, __('Home page only') => 1, __('Except on home page') => 2));
-        $w->blogrollpage->setting('content_only',__('Content only'),0,'check');
-        $w->blogrollpage->setting('class',__('CSS class:'),'');
+        $w
+            ->create('blogrollpage',__('Blogroll page'),array('widgetsBlogrollPage','getWidget'),null,'Blogroll page and random links');
+            ->setting('title',__('Title (optional)'),__('Links'))
+            ->setting('random_category',__('Show random links:'),'/brp-all/','combo',$cat_combo)
+            ->setting('random_number',__('Number of links:'),5)
+            ->setting('new_window',__('Open random links in new window'),0,'check')
+            ->setting('link_title',__('Link to blogroll page title:'),__('More links...'))
+            ->setting('link_target',__('Link target:'),'/brp-all/','combo',$target_combo)
+            ->addHomeOnly()
+            ->addContentOnly()
+            ->addClass()
+            ->addOffline();
     }
 
     public static function getWidget($w)
@@ -71,12 +73,12 @@ class Widgets
         // Generates blogroll page URL if needed
         if ($w->link_target != '/brp-none/') {
 			if ($w->link_target == '/brp-all/') $w->link_target = '';
-			$brp_link = $core->blog->url.$core->url->getURLFor('blogroll',$w->link_target);
+			$brp_link = App::blog()->url().App::url()->getURLFor("blogroll"),$w->link_target);
 		}
 
         $res = ($w->title ? $w->renderTitle(html::escapeHTML($w->title)) : '');
 
-        if ($w->random_category != '/brp-bone/') {
+        if ($w->random_category != '/brp-none/') {
 			if ($w->random_category == '/brp-all/') $w->random_category = '';
 			
             $links = FrontendUrl::getBlogroll($w->random_category,$w->random_number);
