@@ -32,14 +32,6 @@ class Prepend extends Process
 
         App::url()->register('blogrollpage', 'blogroll', '^blogroll(?:/(.+))?$', FrontendUrl::blogroll(...));
 
-        if (App::blog()->isDefined()) {
-            $settings = My::settings();
-            if (!$settings->settingExists('active')) {
-                // Set active flag to true only if recipient(s) is/are set
-                $settings->put('active', (bool) $settings->recipients, App::blogWorkspace()::NS_BOOL);
-            }
-        }
-
         return true;
     }
 }
