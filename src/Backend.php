@@ -34,6 +34,11 @@ class Backend extends Process
 
         App::behavior()->addBehavior('adminBlogPreferencesFormV2', [self::class,'adminBlogPreferencesForm']);
         App::behavior()->addBehavior('adminBeforeBlogSettingsUpdate', [self::class,'adminBeforeBlogSettingsUpdate']);
+        App::behavior()->addBehaviors([
+            // SimpleMenu behaviors
+            'adminSimpleMenuAddType'    => SimpleMenuBehaviors::adminSimpleMenuAddType(...),
+            'adminSimpleMenuBeforeEdit' => SimpleMenuBehaviors::adminSimpleMenuBeforeEdit(...),
+        ]);
 
         return true;
     }

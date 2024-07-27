@@ -1,6 +1,6 @@
 <?php
 /**
- * @brief blogroll, a plugin for Dotclear 2
+ * @brief blogrollpage, a plugin for Dotclear 2
  *
  * @package Dotclear
  * @subpackage Plugins
@@ -86,5 +86,4 @@ class FrontendUrl extends Url
 
         return $links;
     }
-
 }

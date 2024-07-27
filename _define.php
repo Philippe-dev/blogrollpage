@@ -10,7 +10,7 @@
  * @copyright DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE http://www.wtfpl.net/
  */
 $this->registerModule(
-    'Blogroll Page',
+    'Blogroll page',
     'Show your blogroll on a dedicated page',
     'Simon Richard and contributors',
     '3.0',

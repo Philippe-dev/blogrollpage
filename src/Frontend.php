@@ -1,6 +1,6 @@
 <?php
 /**
- * @brief blogroll, a plugin for Dotclear 2
+ * @brief blogrollpage, a plugin for Dotclear 2
  *
  * @package Dotclear
  * @subpackage Plugins
@@ -120,22 +120,21 @@ class Frontend extends Process
         return '<?php echo ' . self::class . '::makeLink($link,App::blog()->settings()->blogrollpage->blogrollpage_new_window); ?>';
     }
 
-    public static function makeLink($link,$new_window = null)
+    public static function makeLink($link, $new_window = null)
     {
         $title = $link['link_title'];
         $href  = $link['link_href'];
-        $desc = $link['link_desc'];
+        $desc  = $link['link_desc'];
         $lang  = $link['link_lang'];
-        $xfn = $link['link_xfn'];
+        $xfn   = $link['link_xfn'];
 
-        $link =
-        '<a href="'.Html::escapeHTML($href).'"'.
-        ((!$lang) ? '' : ' hreflang="'.Html::escapeHTML($lang).'"').
-        ((!$desc) ? '' : ' title="'.Html::escapeHTML($desc).'"').
-        ((!$xfn) ? '' : ' rel="'.Html::escapeHTML($xfn).'"').
-        ((!$new_window) ? '' : ' onclick="window.open(this.href); return false;"').
-        '>'.
-        Html::escapeHTML($title).
+        $link = '<a href="' . Html::escapeHTML($href) . '"' .
+        ((!$lang) ? '' : ' hreflang="' . Html::escapeHTML($lang) . '"') .
+        ((!$desc) ? '' : ' title="' . Html::escapeHTML($desc) . '"') .
+        ((!$xfn) ? '' : ' rel="' . Html::escapeHTML($xfn) . '"') .
+        ((!$new_window) ? '' : ' onclick="window.open(this.href); return false;"') .
+        '>' .
+        Html::escapeHTML($title) .
         '</a>';
 
         return $link;

@@ -1,6 +1,6 @@
 <?php
 /**
- * @brief blogroll, a plugin for Dotclear 2
+ * @brief blogrollpage, a plugin for Dotclear 2
  *
  * @package Dotclear
  * @subpackage Plugins
@@ -16,7 +16,6 @@ namespace Dotclear\Plugin\blogrollpage;
 
 use Dotclear\App;
 use Dotclear\Core\Process;
-use Dotclear\Core\Frontend\Url;
 
 class Prepend extends Process
 {
@@ -31,7 +30,7 @@ class Prepend extends Process
             return false;
         }
 
-        App::url()->register('blogroll', 'blogroll', '^blogroll(?:/(.+))?$', FrontendUrl::blogroll(...));
+        App::url()->register('blogrollpage', 'blogroll', '^blogroll(?:/(.+))?$', FrontendUrl::blogroll(...));
 
         if (App::blog()->isDefined()) {
             $settings = My::settings();
@@ -44,4 +43,3 @@ class Prepend extends Process
         return true;
     }
 }
-

@@ -1,65 +1,24 @@
-# Language: Français
-# Module: blogrollpage - 1.1.2
-# Date: 2013-10-30 17:18:27
-# Translated with translater 2013.05.11
-
 msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
-"Project-Id-Version: blogrollpage 1.1.2\n"
+"Project-Id-Version: blogrollpage 3.0\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2013-10-30T17:18:27+00:00\n"
-"Last-Translator: saymonz\n"
+"PO-Revision-Date: 2024-07-27T12:49:33+00:00\n"
+"Last-Translator: Philippe\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: _widgets.php:23
-msgid "No link"
-msgstr "Pas de lien"
-
-#: _widgets.php:25
-#: inc/lib.brp.behaviors.php:12
 msgid "Blogroll page"
 msgstr "Page de liens"
 
-#: _widgets.php:25
-msgid "Blogroll page and random links"
-msgstr "Page de liens et liens aléatoires"
-
-#: _widgets.php:27
-msgid "Show some random links"
-msgstr "Afficher quelques liens aléatoires"
-
-#: _widgets.php:28
-msgid "From category:"
-msgstr "De la catégorie :"
-
-#: _widgets.php:29
-msgid "Number of links:"
-msgstr "Nombre de liens :"
-
-#: _widgets.php:30
-msgid "Open random links in new window"
-msgstr "Ouvrir les liens aléatoires dans une nouvelle fenêtre"
-
-#: _widgets.php:31
-msgid "Link to blogroll page title:"
-msgstr "Titre du lien vers la page de liens :"
-
-#: _widgets.php:31
-msgid "More links..."
-msgstr "Plus de liens..."
-
-#: _widgets.php:32
-msgid "Link target:"
-msgstr "Cible du lien :"
-
-#: inc/lib.brp.behaviors.php:13
 msgid "Enable blogroll page"
 msgstr "Activer la page de liens"
 
-#: inc/lib.brp.behaviors.php:14
 msgid "Open links in new window"
 msgstr "Ouvrir les liens dans une nouvelle fenêtre"
+
+msgid "Show your blogroll on a dedicated page"
+msgstr "Afficher votre liste de liens sur une page dédiée"
 
