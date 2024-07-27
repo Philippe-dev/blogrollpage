@@ -18,7 +18,7 @@ use Dotclear\Plugin\widgets\WidgetsStack;
 
 class Widgets
 {
-    public static function initWidgets(WidgetsStack $w): string
+    public static function initWidgets(WidgetsStack $widgets): string
     {
         
 
@@ -40,9 +40,16 @@ class Widgets
 					) + $categories;
 					
         $cat_combo = $target_combo;
+        
+        $widgets->create(
+            'blogrollpage',
+            __('Blogroll page'),
+            [self::class, 'getWidget'],
+            null,
+            __('Blogroll page')
+        );
 
-        $w
-            ->create('blogrollpage',__('Blogroll page'),array('widgetsBlogrollPage','getWidget'),null,'Blogroll page and random links');
+        $widgets
             ->setting('title',__('Title (optional)'),__('Links'))
             ->setting('random_category',__('Show random links:'),'/brp-all/','combo',$cat_combo)
             ->setting('random_number',__('Number of links:'),5)
@@ -55,7 +62,7 @@ class Widgets
             ->addOffline();
     }
 
-    public static function getWidget($w)
+    public static function getWidget($widgets)
     {
         
         if ($w->offline) {
