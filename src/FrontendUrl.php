@@ -57,33 +57,6 @@ class FrontendUrl extends Url
 
         $links = $blogroll->getLinksHierarchy($blogroll->getLinks());
 
-        if ($category) {
-            if (!isset($links[$category])) {
-                return '';
-            }
-            $links = [$links[$category]];
-        }
-
-        if (isset($rand)) {
-            foreach ($links as $v) {
-                foreach ($v as $_v) {
-                    $_links[] = $_v;
-                }
-            }
-            $links = $_links;
-            shuffle($links);
-            if (count($links) > $rand || $rand != 0 || $rand != '') {
-                $_links = [];
-                for ($i = 0; $i < $rand; $i++) {
-                    $_links[] = array_shift($links);
-                    if (empty($links)) {
-                        break;
-                    }
-                }
-                $links = $_links;
-            }
-        }
-
         return $links;
     }
 }

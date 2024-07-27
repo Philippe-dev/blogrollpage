@@ -54,7 +54,7 @@ class Frontend extends Process
 
     public static function publicBreadcrumb($context, $separator)
     {
-        if ($context == 'blogroll') {
+        if ($context == 'blogrollpage') {
             if (App::frontend()->context()->blogrollpage_cat) {
                 $u = App::blog()->url() . App::url()->getURLFor('blogroll');
 
