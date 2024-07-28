@@ -56,7 +56,7 @@ class Frontend extends Process
     {
         if ($context == 'blogrollpage') {
             if (App::frontend()->context()->blogrollpage_cat) {
-                $u = App::blog()->url() . App::url()->getURLFor('blogroll');
+                $u = App::blog()->url() . App::url()->getURLFor('blogrollpage');
 
                 return '<a href="' . $u . '">' . __('Links') . '</a>' . $separator . App::frontend()->context()->blogrollpage_cat;
             }
