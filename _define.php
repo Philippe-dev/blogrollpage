@@ -13,7 +13,7 @@ $this->registerModule(
     'Blogroll page',
     'Show your blogroll on a dedicated page',
     'Simon Richard and contributors',
-    '3.1',
+    '3.2',
     [
         'requires'    => [['core', '2.30']],
         'permissions' => 'My',
