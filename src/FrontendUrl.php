@@ -17,6 +17,7 @@ namespace Dotclear\Plugin\blogrollpage;
 use Dotclear\App;
 use Dotclear\Core\Frontend\Url;
 use Dotclear\Plugin\blogroll\Blogroll;
+use Dotclear\Plugin\blogroll\Status\Link;
 
 class FrontendUrl extends Url
 {
@@ -50,12 +51,16 @@ class FrontendUrl extends Url
         $blogroll = new Blogroll(App::blog());
 
         try {
-            $links = $blogroll->getLinks();
+            $links = $blogroll->getLinks([
+                'link_status' => Link::ONLINE,
+            ]);
         } catch (Exception) {
             self::p404();
         }
 
-        $links = $blogroll->getLinksHierarchy($blogroll->getLinks());
+        $links = $blogroll->getLinksHierarchy($blogroll->getLinks([
+            'link_status' => Link::ONLINE,
+        ]));
 
         return $links;
     }
