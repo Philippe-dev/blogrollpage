@@ -19,5 +19,6 @@ $this->registerModule(
         'permissions' => 'My',
         'type'        => 'plugin',
         'support'     => 'https://github.com/Philippe-dev/blogrollpage',
+        'date'        => '2025-01-26T00:00:13+0100',
     ]
 );
