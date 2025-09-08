@@ -15,11 +15,13 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\blogrollpage;
 
 use Dotclear\App;
-use Dotclear\Core\Process;
+use Dotclear\Helper\Process\TraitProcess;
 use Dotclear\Helper\Html\Html;
 
-class Frontend extends Process
+class Frontend
 {
+    use TraitProcess;
+    
     public static function init(): bool
     {
         return self::status(My::checkContext(My::FRONTEND));
