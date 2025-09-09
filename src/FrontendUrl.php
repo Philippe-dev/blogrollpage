@@ -15,7 +15,7 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\blogrollpage;
 
 use Dotclear\App;
-use Dotclear\Core\Frontend\Url;
+use Dotclear\Core\Url;
 use Dotclear\Plugin\blogroll\Blogroll;
 use Dotclear\Plugin\blogroll\Status\Link;
 
