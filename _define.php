@@ -13,7 +13,7 @@ $this->registerModule(
     'Blogroll page',
     'Show your blogroll on a dedicated page',
     'Simon Richard and contributors',
-    '3.8',
+    '3.9',
     [
         'date'        => '2025-09-13T00:00:08+0100',
         'requires'    => [['core', '2.36']],
