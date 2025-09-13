@@ -31,7 +31,7 @@ class FrontendUrl extends Url
         if ($args != '') {
             $blogroll = self::getBlogroll(urldecode($args));
             if (!$blogroll) {
-                Url::p404();
+                App::url()->p404();
             } else {
                 App::frontend()->context()->blogrollpage_cat = $args;
             }
