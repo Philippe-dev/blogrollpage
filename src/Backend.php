@@ -15,9 +15,13 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\blogrollpage;
 
 use Dotclear\App;
+use Dotclear\Helper\Html\Form\Checkbox;
+use Dotclear\Helper\Html\Form\Fieldset;
+use Dotclear\Helper\Html\Form\Label;
+use Dotclear\Helper\Html\Form\Legend;
+use Dotclear\Helper\Html\Form\Para;
 use Dotclear\Helper\Process\TraitProcess;
 use Dotclear\Interface\Core\BlogSettingsInterface;
-use form;
 
 class Backend
 {
@@ -45,12 +49,27 @@ class Backend
         return true;
     }
 
-    public static function adminBlogPreferencesForm(BlogSettingsInterface $settings): void
+    public static function adminBlogPreferencesForm(BlogSettingsInterface $settings): string
     {
-        echo '<div class="fieldset"><h4>' . __('Blogroll page') . '</h4>' .
-        '<p><label class="classic">' . form::checkbox('blogrollpage_enabled', '1', $settings->blogrollpage->blogrollpage_enabled) . __('Enable blogroll page') . '</label></p>' .
-        '<p><label class="classic">' . form::checkbox('blogrollpage_new_window', '1', $settings->blogrollpage->blogrollpage_new_window) . __('Open links in new window') . '</label></p>' .
-        '</div>';
+        // Add fieldset for plugin options
+        echo
+        (new Fieldset('blogrollpage'))
+        ->legend((new Legend(__('Blogroll page'))))
+        ->fields([
+            (new Para())->items([
+                (new Checkbox('blogrollpage_enabled', $settings->blogrollpage->blogrollpage_enabled))
+                    ->value(1)
+                    ->label((new Label(__('Enable blogroll page'), Label::INSIDE_TEXT_AFTER))),
+            ]),
+            (new Para())->items([
+                (new Checkbox('blogrollpage_new_window', $settings->blogrollpage->blogrollpage_new_window))
+                    ->value(1)
+                    ->label((new Label(__('Open links in new window'), Label::INSIDE_TEXT_AFTER))),
+            ]),
+        ])
+        ->render();
+
+        return '';
     }
 
     public static function adminBeforeBlogSettingsUpdate(BlogSettingsInterface $settings): void
