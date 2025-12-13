@@ -26,7 +26,7 @@ use Dotclear\Interface\Core\BlogSettingsInterface;
 class Backend
 {
     use TraitProcess;
-    
+
     public static function init(): bool
     {
         return self::status(My::checkContext(My::BACKEND));
