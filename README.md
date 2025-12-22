@@ -1,5 +1,9 @@
 # Blogroll Page
 
+![Release 3.10.1](https://img.shields.io/badge/Release-3.10.1-b7d7ee)
+![DWTFYW](https://img.shields.io/badge/License-DWTFYW-a5cc52)
+![Dotclear 2.36](https://img.shields.io/badge/Dotclear-2.36-137bbb)
+
 Forked from Simon Richard's plugin Blogroll Page 2
 
 ## Informations générales
