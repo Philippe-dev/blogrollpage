@@ -1,6 +1,6 @@
 # Blogroll Page
 
-![Release 4.1](https://img.shields.io/badge/Release-4.1-b7d7ee)
+![Release 4.2](https://img.shields.io/badge/Release-4.2-b7d7ee)
 ![WTFPL License](https://img.shields.io/badge/License-WTFPL-a5cc52)
 ![Dotclear 2.36](https://img.shields.io/badge/Dotclear-2.36-137bbb)
 
