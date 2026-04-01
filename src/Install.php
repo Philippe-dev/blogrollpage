@@ -32,13 +32,7 @@ class Install
             return false;
         }
 
-        // reset for new versions
-        if (App::blog()->settings()->exists('blogrollpage')) {
-            App::blog()->settings()->delWorkspace(My::id());
-        }
-        
-
-        My::settings()->put('active', false, 'boolean', 'Enable blogrollpage plugin', false, true);
+        My::settings()->put('active', true, 'boolean', 'Enable blogrollpage plugin', false, true);
         My::settings()->put('blogrollpage_new_window', false, 'boolean', 'Enable opening links in new window', false, true);
         
         return true;
