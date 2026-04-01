@@ -15,15 +15,16 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\blogrollpage;
 
 use Dotclear\App;
+use Dotclear\Core\Url;
 use Dotclear\Plugin\blogroll\Blogroll;
 use Dotclear\Plugin\blogroll\Status\Link;
 
-class FrontendUrl
+class FrontendUrl extends Url
 {
     public static function blogroll(?string $args): void
     {
         $settings = My::settings();
-        if (!$settings->blogrollpage_enabled) {
+        if (!$settings->active) {
             self::p404();
         }
 

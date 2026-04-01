@@ -33,10 +33,17 @@ class Frontend
             return false;
         }
 
+        // Don't do things in frontend if plugin disabled
+        $settings = My::settings();
+        if (!(bool) $settings->active) {
+            return false;
+        }
+
         App::behavior()->addBehavior('publicBreadcrumb', [self::class,'publicBreadcrumb']);
 
         App::frontend()->template()->addBlock('BlogrollPage', [self::class,'BlogrollPage']);
-        App::frontend()->template()->addValue('BlogrollPageTitle', [self::class,'Title']);
+        App::frontend()->template()->addValue('BlogrollPageTitle', FrontendTemplate::BlogrollPageTitle(...));
+        App::frontend()->template()->addValue('BlogrollPageHeader', FrontendTemplate::BlogrollPageHeader(...));
         App::frontend()->template()->addBlock('BlogrollPageIfTitle', [self::class,'IfTitle']);
         App::frontend()->template()->addBlock('BlogrollPageIfCategoryTitle', [self::class,'IfCategoryTitle']);
         App::frontend()->template()->addValue('BlogrollPageCategoryTitle', [self::class,'CategoryTitle']);
@@ -57,10 +64,10 @@ class Frontend
     public static function publicBreadcrumb($context, $separator)
     {
         if ($context == 'blogrollpage') {
-            if (App::frontend()->context()->blogrollpage_cat) {
+            if (App::frontend()->context()->blogrollpage) {
                 $u = App::blog()->url() . App::url()->getURLFor('blogrollpage');
 
-                return '<a href="' . $u . '">' . __('Links') . '</a>' . $separator . App::frontend()->context()->blogrollpage_cat;
+                return '<a href="' . $u . '">' . __('Links') . '</a>' . $separator . App::frontend()->context()->blogrollpage;
             }
 
             return __('Links');
@@ -78,18 +85,11 @@ class Frontend
 
     public static function IfTitle($attr, $content)
     {
-        $res = '<?php $brp_cat = App::frontend()->context()->blogrollpage_cat; if (!empty($brp_cat)) { ?>';
+        $res = '<?php $brp_cat = App::frontend()->context()->blogrollpage; if (!empty($brp_cat)) { ?>';
         $res .= $content;
         $res .= '<?php } ?>';
 
         return $res;
-    }
-
-    public static function Title($attr)
-    {
-        $f = App::frontend()->template()->getFilters($attr);
-
-        return '<?php echo ' . sprintf($f, '$brp_cat') . '; ?>';
     }
 
     public static function IfCategoryTitle($attr, $content)

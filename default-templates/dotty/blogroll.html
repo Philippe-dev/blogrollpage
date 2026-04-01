@@ -1,10 +1,13 @@
 {{tpl:extends parent="__layout.html"}}
-
 <tpl:Block name="head-title">
-	<title>{{tpl:lang Links}}
-		<tpl:BlogrollPageIfTitle> - {{tpl:BlogrollPageTitle}}</tpl:BlogrollPageIfTitle> -
-		{{tpl:BlogName encode_html="1"}}
-	</title>
+	<title>{{tpl:BlogrollPageTitle}} - {{tpl:BlogName encode_html="1"}}</title>
+</tpl:Block>
+<tpl:Block name="meta-robots">
+	<meta name="ROBOTS" content="{{tpl:BlogMetaRobots robots=" NOINDEX,NOARCHIVE"}}">
+</tpl:Block>
+<tpl:Block name="head-linkrel">
+	<link rel="contents" title="{{tpl:lang Archives}}" href="{{tpl:BlogArchiveURL}}">
+	<link rel="alternate" type="application/atom+xml" title="Atom 1.0" href="{{tpl:BlogFeedURL type=" atom"}}">
 </tpl:Block>
 
 <tpl:Block name="body-tag">
@@ -13,25 +16,35 @@
 </tpl:Block>
 
 <tpl:Block name="main-content">
-	<header id="content-info">
-		<h2>{{tpl:lang Links}}
-			<tpl:BlogrollPageIfTitle> - {{tpl:BlogrollPageTitle}}</tpl:BlogrollPageIfTitle>
-		</h2>
-	</header>
-	<article class="content-inner">
-	<tpl:BlogrollPage>
-		<tpl:BlogrollPageIfCategoryTitle>
-			<h3>{{tpl:BlogrollPageCategoryTitle}}</h3>
-		</tpl:BlogrollPageIfCategoryTitle>
-		<dl>
-			<tpl:BlogrollPageLinks>
-				<dt>{{tpl:BlogrollPageLink}}</dt>
-				<tpl:BlogrollPageIfLinkDesc>
-					<dd>{{tpl:BlogrollPageLinkDesc}}</dd>
-				</tpl:BlogrollPageIfLinkDesc>
-			</tpl:BlogrollPageLinks>
-		</dl>
-	</tpl:BlogrollPage>
-	</article>
-
+	<tpl:Block name="main-content-before"></tpl:Block>
+	<tpl:Block name="content-info-header">
+		<header id="content-info">
+			<tpl:Block name="content-info-header-title">
+				<h2>{{tpl:BlogrollPageTitle}}</h2>
+			</tpl:Block>
+			<tpl:Block name="content-info-header-content">
+				{{tpl:BlogrollPageHeader}}
+			</tpl:Block>
+		</header>
+	</tpl:Block>
+	<tpl:Block name="content-inner">
+		<tpl:Block name="content-inner-before"></tpl:Block>
+		<div class="content-inner">
+			<tpl:BlogrollPage>
+				<tpl:BlogrollPageIfCategoryTitle>
+					<h3>{{tpl:BlogrollPageCategoryTitle}}</h3>
+				</tpl:BlogrollPageIfCategoryTitle>
+				<dl>
+					<tpl:BlogrollPageLinks>
+						<dt>{{tpl:BlogrollPageLink}}</dt>
+						<tpl:BlogrollPageIfLinkDesc>
+							<dd>{{tpl:BlogrollPageLinkDesc}}</dd>
+						</tpl:BlogrollPageIfLinkDesc>
+					</tpl:BlogrollPageLinks>
+				</dl>
+			</tpl:BlogrollPage>
+		</div> <!-- # End #content-inner -->
+		<tpl:Block name="content-inner-after"></tpl:Block>
+	</tpl:Block>
+	<tpl:Block name="main-content-after"></tpl:Block>
 </tpl:Block>

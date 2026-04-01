@@ -38,12 +38,14 @@ class Backend
             return false;
         }
 
-        App::behavior()->addBehavior('adminBlogPreferencesFormV2', [self::class,'adminBlogPreferencesForm']);
-        App::behavior()->addBehavior('adminBeforeBlogSettingsUpdate', [self::class,'adminBeforeBlogSettingsUpdate']);
+        My::addBackendMenuItem(App::backend()->menus()::MENU_BLOG);
+
         App::behavior()->addBehaviors([
-            // SimpleMenu behaviors
-            'adminSimpleMenuAddType'    => SimpleMenuBehaviors::adminSimpleMenuAddType(...),
-            'adminSimpleMenuBeforeEdit' => SimpleMenuBehaviors::adminSimpleMenuBeforeEdit(...),
+            'adminBlogPreferencesFormV2'    => [self::class,'adminBlogPreferencesForm'],
+            'adminBeforeBlogSettingsUpdate' => [self::class,'adminBeforeBlogSettingsUpdate'],
+            'adminRteFlagsV2'               => BackendBehaviors::adminRteFlags(...),
+            'adminSimpleMenuAddType'        => SimpleMenuBehaviors::adminSimpleMenuAddType(...),
+            'adminSimpleMenuBeforeEdit'     => SimpleMenuBehaviors::adminSimpleMenuBeforeEdit(...),
         ]);
 
         return true;
@@ -57,7 +59,7 @@ class Backend
         ->legend((new Legend(__('Blogroll page'))))
         ->fields([
             (new Para())->items([
-                (new Checkbox('blogrollpage_enabled', $settings->blogrollpage->blogrollpage_enabled))
+                (new Checkbox('active', $settings->blogrollpage->active))
                     ->value(1)
                     ->label((new Label(__('Enable blogroll page'), Label::INSIDE_TEXT_AFTER))),
             ]),
@@ -74,7 +76,7 @@ class Backend
 
     public static function adminBeforeBlogSettingsUpdate(BlogSettingsInterface $settings): void
     {
-        $settings->blogrollpage->put('blogrollpage_enabled', !empty($_POST['blogrollpage_enabled']), 'boolean');
+        $settings->blogrollpage->put('active', !empty($_POST['active']), 'boolean');
         $settings->blogrollpage->put('blogrollpage_new_window', !empty($_POST['blogrollpage_new_window']), 'boolean');
     }
 }
