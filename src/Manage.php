@@ -112,10 +112,6 @@ class Manage
             $page_title = __('Blogroll page');
         }
 
-        if ($page_header === NULL) {
-            $page_header === __('<p>My links list.</p>');
-        }
-
         App::backend()->page()->openModule(My::name(), $head);
 
         echo App::backend()->page()->breadcrumb(
@@ -138,7 +134,7 @@ class Manage
                         ->label((new Label(__('Activate'), Label::INSIDE_TEXT_AFTER))),
                 ]),
                 
-                (new Text('h3', __('Presentation options'))),
+                
                 (new Para())->items([
                     (new Input('page_title'))
                         ->size(30)
@@ -157,7 +153,7 @@ class Manage
                         ->lang(App::auth()->getInfo('user_lang'))
                         ->spellcheck(true)
                         ->value(Html::escapeHTML($page_header))
-                        ->label((new Label(__('Blogroll description:'), Label::OUTSIDE_TEXT_BEFORE))),
+                        ->label((new Label(__('Blogroll description'), Label::OUTSIDE_TEXT_BEFORE))),
                 ]),
                 
                 

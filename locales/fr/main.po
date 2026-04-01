@@ -1,24 +1,45 @@
+# Language: Français
+# Module: blogrollpage - 4.0
+# Date: 2026-04-01 04:07:53
+# Translated with translater 2025.09.11
+
 msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
-"Project-Id-Version: blogrollpage 3.0\n"
+"Project-Id-Version: blogrollpage 4.0\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2024-07-27T12:49:33+00:00\n"
+"PO-Revision-Date: 2026-04-01T04:07:53+00:00\n"
 "Last-Translator: Philippe\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#: src/Backend.php:59
+#: src/BackendBehaviors.php:29
+#: src/Manage.php:112
+#: src/SimpleMenuBehaviors.php:29
 msgid "Blogroll page"
 msgstr "Page de liens"
 
+#: src/Backend.php:64
 msgid "Enable blogroll page"
 msgstr "Activer la page de liens"
 
+#: src/Backend.php:69
 msgid "Open links in new window"
 msgstr "Ouvrir les liens dans une nouvelle fenêtre"
 
+#: src/BackendBehaviors.php:44
+#: src/Manage.php:160
+msgid "Blogroll description"
+msgstr "Description de la page"
+
+#: src/Manage.php:116
+msgid "<p>My links list.</p>"
+msgstr "<p>Ma liste de liens.</p>"
+
+#: src/SimpleMenuBehaviors.php:45
 msgid "Show your blogroll on a dedicated page"
 msgstr "Afficher votre liste de liens sur une page dédiée"
 

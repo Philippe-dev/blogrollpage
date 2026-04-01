@@ -41,7 +41,7 @@ class BackendBehaviors
      */
     public static function adminRteFlags(ArrayObject $rte): string
     {
-        $rte['blogrollpage'] = [true, __('Blogroll page form caption')];
+        $rte['blogrollpage'] = [true, __('Blogroll description')];
 
         return '';
     }
