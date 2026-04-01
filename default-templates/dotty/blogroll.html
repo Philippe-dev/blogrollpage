@@ -29,21 +29,21 @@
 	</tpl:Block>
 	<tpl:Block name="content-inner">
 		<tpl:Block name="content-inner-before"></tpl:Block>
-		<div class="content-inner">
+		<article class="content-inner">
 			<tpl:BlogrollPage>
 				<tpl:BlogrollPageIfCategoryTitle>
 					<h3>{{tpl:BlogrollPageCategoryTitle}}</h3>
 				</tpl:BlogrollPageIfCategoryTitle>
-				<dl>
+				
 					<tpl:BlogrollPageLinks>
-						<dt>{{tpl:BlogrollPageLink}}</dt>
+						<h4>{{tpl:BlogrollPageLink}}</h4>
 						<tpl:BlogrollPageIfLinkDesc>
-							<dd>{{tpl:BlogrollPageLinkDesc}}</dd>
+							<p>{{tpl:BlogrollPageLinkDesc}}</p>
 						</tpl:BlogrollPageIfLinkDesc>
 					</tpl:BlogrollPageLinks>
-				</dl>
+				
 			</tpl:BlogrollPage>
-		</div> <!-- # End #content-inner -->
+		</article> <!-- # End #content-inner -->
 		<tpl:Block name="content-inner-after"></tpl:Block>
 	</tpl:Block>
 	<tpl:Block name="main-content-after"></tpl:Block>
