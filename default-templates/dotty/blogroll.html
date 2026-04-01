@@ -16,31 +16,23 @@
 </tpl:Block>
 
 <tpl:Block name="main-content">
-	<tpl:Block name="main-content-before"></tpl:Block>
-	<tpl:Block name="content-info-header">
-		<header id="content-info">
-			<h2>{{tpl:BlogrollPageTitle}}</h2>
-			{{tpl:BlogrollPageHeader}}
-		</header>
-	</tpl:Block>
-	<tpl:Block name="content-inner">
-		<tpl:Block name="content-inner-before"></tpl:Block>
-		<article class="content-inner">
-			<tpl:BlogrollPage>
-				<tpl:BlogrollPageIfCategoryTitle>
-					<h3>{{tpl:BlogrollPageCategoryTitle}}</h3>
-				</tpl:BlogrollPageIfCategoryTitle>
-				
-					<tpl:BlogrollPageLinks>
-						<h4>{{tpl:BlogrollPageLink}}</h4>
-						<tpl:BlogrollPageIfLinkDesc>
-							<p>{{tpl:BlogrollPageLinkDesc}}</p>
-						</tpl:BlogrollPageIfLinkDesc>
-					</tpl:BlogrollPageLinks>
-				
-			</tpl:BlogrollPage>
-		</article> <!-- # End #content-inner -->
-		<tpl:Block name="content-inner-after"></tpl:Block>
-	</tpl:Block>
-	<tpl:Block name="main-content-after"></tpl:Block>
+	<header id="content-info">
+		<h2>{{tpl:BlogrollPageTitle}}</h2>
+		{{tpl:BlogrollPageHeader}}
+	</header>
+	<article class="content-inner">
+		<tpl:BlogrollPage>
+			<tpl:BlogrollPageIfCategoryTitle>
+				<h3>{{tpl:BlogrollPageCategoryTitle}}</h3>
+			</tpl:BlogrollPageIfCategoryTitle>
+
+			<tpl:BlogrollPageLinks>
+				<h4>{{tpl:BlogrollPageLink}}</h4>
+				<tpl:BlogrollPageIfLinkDesc>
+					<p>{{tpl:BlogrollPageLinkDesc}}</p>
+				</tpl:BlogrollPageIfLinkDesc>
+			</tpl:BlogrollPageLinks>
+
+		</tpl:BlogrollPage>
+	</article> <!-- # End #content-inner -->
 </tpl:Block>
