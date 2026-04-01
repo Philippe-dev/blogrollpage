@@ -1,14 +1,14 @@
 # Language: Français
-# Module: blogrollpage - 4.0
-# Date: 2026-04-01 04:07:53
+# Module: blogrollpage - 4.0.1
+# Date: 2026-04-01 15:28:43
 # Translated with translater 2025.09.11
 
 msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
-"Project-Id-Version: blogrollpage 4.0\n"
+"Project-Id-Version: blogrollpage 4.0.1\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-04-01T04:07:53+00:00\n"
+"PO-Revision-Date: 2026-04-01T15:28:43+00:00\n"
 "Last-Translator: Philippe\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -31,15 +31,25 @@ msgid "Open links in new window"
 msgstr "Ouvrir les liens dans une nouvelle fenêtre"
 
 #: src/BackendBehaviors.php:44
-#: src/Manage.php:160
+msgid "Blogroll page description"
+msgstr "La description de la page de liens"
+
+#: src/Manage.php:156
 msgid "Blogroll description"
 msgstr "Description de la page"
 
-#: src/Manage.php:116
-msgid "<p>My links list.</p>"
-msgstr "<p>Ma liste de liens.</p>"
+#: src/Manage.php:161
+msgid "Your blogroll URL:"
+msgstr "URL de votre page de liens :"
+
+#: src/Manage.php:166
+msgid "You may use Simple Menu predefined entry to link to it."
+msgstr "Vous pouvez aussi utiliser l'entrée prédéfinie de Simple Menu pour faire un lien vers elle."
 
 #: src/SimpleMenuBehaviors.php:45
 msgid "Show your blogroll on a dedicated page"
 msgstr "Afficher votre liste de liens sur une page dédiée"
+
+msgid "<p>My links list.</p>"
+msgstr "<p>Ma liste de liens.</p>"
 

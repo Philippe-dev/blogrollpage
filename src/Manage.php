@@ -19,9 +19,9 @@ use Dotclear\Helper\Html\Form\Checkbox;
 use Dotclear\Helper\Html\Form\Form;
 use Dotclear\Helper\Html\Form\Input;
 use Dotclear\Helper\Html\Form\Label;
+use Dotclear\Helper\Html\Form\Link;
 use Dotclear\Helper\Html\Form\Note;
 use Dotclear\Helper\Html\Form\Para;
-use Dotclear\Helper\Html\Form\Span;
 use Dotclear\Helper\Html\Form\Submit;
 use Dotclear\Helper\Html\Form\Text;
 use Dotclear\Helper\Html\Form\Textarea;
@@ -54,7 +54,7 @@ class Manage
             try {
                 $active = !empty($_POST['active']);
 
-                $page_title   = $_POST['page_title'];
+                $page_title  = $_POST['page_title'];
                 $page_header = $_POST['page_header'];
 
                 // Everything's fine, save options
@@ -104,11 +104,11 @@ class Manage
 
         $settings = My::settings();
 
-        $active       = $settings->active;
-        $page_title   = $settings->page_title;
+        $active      = $settings->active;
+        $page_title  = $settings->page_title;
         $page_header = $settings->page_header;
 
-        if ($page_title === NULL) {
+        if ($page_title === null) {
             $page_title = __('Blogroll page');
         }
 
@@ -133,8 +133,7 @@ class Manage
                         ->value(1)
                         ->label((new Label(__('Activate'), Label::INSIDE_TEXT_AFTER))),
                 ]),
-                
-                
+
                 (new Para())->items([
                     (new Input('page_title'))
                         ->size(30)
@@ -142,7 +141,8 @@ class Manage
                         ->value(Html::escapeHTML($page_title))
                         //->required(true)
                         ->placeholder(__('Title'))
-                        ->label((new Label( __('Page title:'),
+                        ->label((new Label(
+                            __('Page title:'),
                             Label::OUTSIDE_TEXT_BEFORE
                         ))->id('page_title_label')),
                 ]),
@@ -155,15 +155,24 @@ class Manage
                         ->value(Html::escapeHTML($page_header))
                         ->label((new Label(__('Blogroll description'), Label::OUTSIDE_TEXT_BEFORE))),
                 ]),
-                
-                
+                (new Note())
+                    ->class(['form-note', 'info', 'maximal'])
+                    ->items([
+                        (new Text(null, __('Your blogroll URL:') . '&nbsp;')),
+                        (new Link())
+                            ->href(App::blog()->url() . App::url()->getURLFor('blogrollpage'))
+                            ->class(['outgoing'])
+                            ->text(App::blog()->url() . App::url()->getURLFor('blogrollpage') . '. '),
+                        (new Text(null, __('You may use Simple Menu predefined entry to link to it.'))),
+                    ]),
+
                 // Submit
                 (new Para())->items([
                     (new Submit(['frmsubmit']))
                         ->value(__('Save')),
                     ... My::hiddenFields(),
                 ]),
-               
+
             ])
         ->render();
 
