@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\blogrollpage;
 
 use Dotclear\App;
+use Dotclear\Core\Backend\Favorites;
 use Dotclear\Helper\Html\Form\Checkbox;
 use Dotclear\Helper\Html\Form\Fieldset;
 use Dotclear\Helper\Html\Form\Label;
@@ -39,6 +40,20 @@ class Backend
         }
 
         My::addBackendMenuItem(App::backend()->menus()::MENU_BLOG);
+
+        App::behavior()->addBehaviors([
+            'adminDashboardFavoritesV2' => function (Favorites $favs) {
+                $favs->register(My::id(), [
+                    'title'       => My::name(),
+                    'url'         => My::manageUrl(),
+                    'small-icon'  => My::icons(),
+                    'large-icon'  => My::icons(),
+                    'permissions' => App::auth()->makePermissions([
+                        App::auth()::PERMISSION_ADMIN,
+                    ]),
+                ]);
+            },
+        ]);
 
         App::behavior()->addBehaviors([
             'adminBlogPreferencesFormV2'    => [self::class,'adminBlogPreferencesForm'],
