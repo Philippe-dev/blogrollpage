@@ -39,7 +39,7 @@ class Frontend
             return false;
         }
 
-        App::behavior()->addBehavior('publicBreadcrumb', [self::class,'publicBreadcrumb']);
+        App::behavior()->addBehavior('publicBreadcrumb', self::publicBreadcrumb(...));
         App::frontend()->template()->addBlock('BlogrollPage', self::BlogrollPage(...));
         App::frontend()->template()->addValue('BlogrollPageTitle', FrontendTemplate::BlogrollPageTitle(...));
         App::frontend()->template()->addValue('BlogrollPageHeader', FrontendTemplate::BlogrollPageHeader(...));
