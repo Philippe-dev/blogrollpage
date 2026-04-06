@@ -40,23 +40,22 @@ class Frontend
         }
 
         App::behavior()->addBehavior('publicBreadcrumb', [self::class,'publicBreadcrumb']);
-
-        App::frontend()->template()->addBlock('BlogrollPage', [self::class,'BlogrollPage']);
+        App::frontend()->template()->addBlock('BlogrollPage', self::BlogrollPage(...));
         App::frontend()->template()->addValue('BlogrollPageTitle', FrontendTemplate::BlogrollPageTitle(...));
         App::frontend()->template()->addValue('BlogrollPageHeader', FrontendTemplate::BlogrollPageHeader(...));
-        App::frontend()->template()->addBlock('BlogrollPageIfTitle', [self::class,'IfTitle']);
-        App::frontend()->template()->addBlock('BlogrollPageIfCategoryTitle', [self::class,'IfCategoryTitle']);
-        App::frontend()->template()->addValue('BlogrollPageCategoryTitle', [self::class,'CategoryTitle']);
-        App::frontend()->template()->addBlock('BlogrollPageLinks', [self::class,'Links']);
-        App::frontend()->template()->addValue('BlogrollPageLink', [self::class,'Link']);
-        App::frontend()->template()->addValue('BlogrollPageLinkTitle', [self::class,'LinkTitle']);
-        App::frontend()->template()->addValue('BlogrollPageLinkHref', [self::class,'LinkHref']);
-        App::frontend()->template()->addBlock('BlogrollPageIfLinkDesc', [self::class,'IfLinkDesc']);
-        App::frontend()->template()->addValue('BlogrollPageLinkDesc', [self::class,'LinkDesc']);
-        App::frontend()->template()->addBlock('BlogrollPageIfLinkLang', [self::class,'IfLinkLang']);
-        App::frontend()->template()->addValue('BlogrollPageLinkLang', [self::class,'LinkLang']);
-        App::frontend()->template()->addBlock('BlogrollPageIfLinkXFN', [self::class,'IfLinkXFN']);
-        App::frontend()->template()->addValue('BlogrollPageLinkXFN', [self::class,'LinkXFN']);
+        App::frontend()->template()->addBlock('BlogrollPageIfTitle', self::IfTitle(...));
+        App::frontend()->template()->addBlock('BlogrollPageIfCategoryTitle', self::IfCategoryTitle(...));
+        App::frontend()->template()->addValue('BlogrollPageCategoryTitle', self::CategoryTitle(...));
+        App::frontend()->template()->addBlock('BlogrollPageLinks', self::Links(...));
+        App::frontend()->template()->addValue('BlogrollPageLink', self::Link(...));
+        App::frontend()->template()->addValue('BlogrollPageLinkTitle', self::LinkTitle(...));
+        App::frontend()->template()->addValue('BlogrollPageLinkHref', self::LinkHref(...));
+        App::frontend()->template()->addBlock('BlogrollPageIfLinkDesc', self::IfLinkDesc(...));
+        App::frontend()->template()->addValue('BlogrollPageLinkDesc', self::LinkDesc(...));
+        App::frontend()->template()->addBlock('BlogrollPageIfLinkLang', self::IfLinkLang(...));
+        App::frontend()->template()->addValue('BlogrollPageLinkLang', self::LinkLang(...));
+        App::frontend()->template()->addBlock('BlogrollPageIfLinkXFN', self::IfLinkXFN(...));
+        App::frontend()->template()->addValue('BlogrollPageLinkXFN', self::LinkXFN(...));
 
         return true;
     }
