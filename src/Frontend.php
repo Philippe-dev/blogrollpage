@@ -39,7 +39,6 @@ class Frontend
             return false;
         }
 
-        App::behavior()->addBehavior('publicBreadcrumb', self::publicBreadcrumb(...));
         App::frontend()->template()->addBlock('BlogrollPage', self::BlogrollPage(...));
         App::frontend()->template()->addValue('BlogrollPageTitle', FrontendTemplate::BlogrollPageTitle(...));
         App::frontend()->template()->addValue('BlogrollPageHeader', FrontendTemplate::BlogrollPageHeader(...));
@@ -56,6 +55,12 @@ class Frontend
         App::frontend()->template()->addValue('BlogrollPageLinkLang', self::LinkLang(...));
         App::frontend()->template()->addBlock('BlogrollPageIfLinkXFN', self::IfLinkXFN(...));
         App::frontend()->template()->addValue('BlogrollPageLinkXFN', self::LinkXFN(...));
+
+        App::behavior()->addBehaviors([
+            'publicBreadcrumb' => self::publicBreadcrumb(...),
+
+            'initWidgets' => Widgets::initWidgets(...),
+        ]);
 
         return true;
     }

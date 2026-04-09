@@ -63,6 +63,12 @@ class Backend
             'adminSimpleMenuBeforeEdit'     => SimpleMenuBehaviors::adminSimpleMenuBeforeEdit(...),
         ]);
 
+        if (My::checkContext(My::WIDGETS)) {
+            App::behavior()->addBehaviors([
+                'initWidgets' => Widgets::initWidgets(...),
+            ]);
+        }
+
         return true;
     }
 
