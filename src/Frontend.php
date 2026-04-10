@@ -16,7 +16,6 @@ namespace Dotclear\Plugin\blogrollpage;
 
 use Dotclear\App;
 use Dotclear\Helper\Process\TraitProcess;
-use Dotclear\Helper\Html\Html;
 
 class Frontend
 {
@@ -24,12 +23,12 @@ class Frontend
 
     public static function init(): bool
     {
-        return FrontendTemplate::status(My::checkContext(My::FRONTEND));
+        return self::status(My::checkContext(My::FRONTEND));
     }
 
     public static function process(): bool
     {
-        if (!FrontendTemplate::status()) {
+        if (!self::status()) {
             return false;
         }
 
@@ -58,7 +57,6 @@ class Frontend
 
         App::behavior()->addBehaviors([
             'publicBreadcrumb' => FrontendTemplate::publicBreadcrumb(...),
-
             'initWidgets' => Widgets::initWidgets(...),
         ]);
 

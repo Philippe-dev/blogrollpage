@@ -15,6 +15,8 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\blogrollpage;
 
 use ArrayObject;
+use Dotclear\App;
+use Dotclear\Helper\Html\Html;
 use Dotclear\Plugin\TemplateHelper\Code;
 
 class FrontendTemplate
@@ -50,7 +52,7 @@ class FrontendTemplate
         );
     }
 
-    public static function publicBreadcrumb($context, $separator)
+    public static function publicBreadcrumb($context, $separator): string
     {
         if ($context == 'blogrollpage') {
             if (App::frontend()->context()->blogrollpage) {
@@ -63,7 +65,7 @@ class FrontendTemplate
         }
     }
 
-    public static function BlogrollPage($attr, $content)
+    public static function BlogrollPage($attr, $content): string
     {
         $res = '<?php foreach (App::frontend()->context()->blogrollpage_blogroll as $category => $links) { ?>';
         $res .= $content;
@@ -72,7 +74,7 @@ class FrontendTemplate
         return $res;
     }
 
-    public static function IfTitle($attr, $content)
+    public static function IfTitle($attr, $content): string
     {
         $res = '<?php $brp_cat = App::frontend()->context()->blogrollpage; if (!empty($brp_cat)) { ?>';
         $res .= $content;
@@ -81,7 +83,7 @@ class FrontendTemplate
         return $res;
     }
 
-    public static function IfCategoryTitle($attr, $content)
+    public static function IfCategoryTitle($attr, $content): string
     {
         $res = '<?php if (!empty($category)) { ?>';
         $res .= $content;
@@ -90,14 +92,14 @@ class FrontendTemplate
         return $res;
     }
 
-    public static function CategoryTitle($attr)
+    public static function CategoryTitle($attr): string
     {
         $f = App::frontend()->template()->getFilters($attr);
 
         return '<?php echo ' . sprintf($f, '$category') . '; ?>';
     }
 
-    public static function Links($attr, $content)
+    public static function Links($attr, $content): string
     {
         $res = '<?php foreach ($links as $link) { ?>';
         $res .= $content;
@@ -106,12 +108,12 @@ class FrontendTemplate
         return $res;
     }
 
-    public static function Link($attr)
+    public static function Link($attr): string
     {
         return '<?php echo ' . self::class . '::makeLink($link,App::blog()->settings()->blogrollpage->blogrollpage_new_window); ?>';
     }
 
-    public static function makeLink($link, $new_window = null)
+    public static function makeLink($link, $new_window = null): string
     {
         $title = $link['link_title'];
         $href  = $link['link_href'];
@@ -131,21 +133,21 @@ class FrontendTemplate
         return $link;
     }
 
-    public static function LinkTitle($attr)
+    public static function LinkTitle($attr): string
     {
         $f = App::frontend()->template()->getFilters($attr);
 
         return '<?php echo ' . sprintf($f, '$link[\'link_title\']') . '; ?>';
     }
 
-    public static function LinkHref($attr)
+    public static function LinkHref($attr): string
     {
         $f = App::frontend()->template()->getFilters($attr);
 
         return '<?php echo ' . sprintf($f, '$link[\'link_href\']') . '; ?>';
     }
 
-    public static function IfLinkDesc($attr, $content)
+    public static function IfLinkDesc($attr, $content): string
     {
         $res = '<?php if (!empty($link[\'link_desc\'])) { ?>';
         $res .= $content;
@@ -154,14 +156,14 @@ class FrontendTemplate
         return $res;
     }
 
-    public static function LinkDesc($attr)
+    public static function LinkDesc($attr): string
     {
         $f = App::frontend()->template()->getFilters($attr);
 
         return '<?php echo ' . sprintf($f, '$link[\'link_desc\']') . '; ?>';
     }
 
-    public static function IfLinkLang($attr, $content)
+    public static function IfLinkLang($attr, $content): string
     {
         $res = '<?php if (!empty($link[\'link_lang\'])) { ?>';
         $res .= $content;
@@ -170,14 +172,14 @@ class FrontendTemplate
         return $res;
     }
 
-    public static function LinkLang($attr)
+    public static function LinkLang($attr): string
     {
         $f = App::frontend()->template()->getFilters($attr);
 
         return '<?php echo ' . sprintf($f, '$link[\'link_lang\']') . '; ?>';
     }
 
-    public static function IfLinkXFN($attr, $content)
+    public static function IfLinkXFN($attr, $content): string
     {
         $res = '<?php if (!empty($link[\'link_xfn\'])) { ?>';
         $res .= $content;
@@ -186,7 +188,7 @@ class FrontendTemplate
         return $res;
     }
 
-    public static function LinkXFN($attr)
+    public static function LinkXFN($attr): string
     {
         $f = App::frontend()->template()->getFilters($attr);
 
