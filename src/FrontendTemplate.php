@@ -52,7 +52,7 @@ class FrontendTemplate
         );
     }
 
-    public static function publicBreadcrumb($context, $separator) : string
+    public static function publicBreadcrumb($context, $separator): string
     {
         if ($context == 'blogrollpage') {
             if (App::frontend()->context()->blogrollpage) {
@@ -65,7 +65,7 @@ class FrontendTemplate
         }
     }
 
-    public static function BlogrollPage($attr, $content) : string
+    public static function BlogrollPage($attr, $content): string
     {
         $res = '<?php foreach (App::frontend()->context()->blogrollpage_blogroll as $category => $links) { ?>';
         $res .= $content;
@@ -74,7 +74,7 @@ class FrontendTemplate
         return $res;
     }
 
-    public static function IfTitle($attr, $content) :  string
+    public static function IfTitle($attr, $content): string
     {
         $res = '<?php $brp_cat = App::frontend()->context()->blogrollpage; if (!empty($brp_cat)) { ?>';
         $res .= $content;
@@ -99,7 +99,7 @@ class FrontendTemplate
         return '<?php echo ' . sprintf($f, '$category') . '; ?>';
     }
 
-    public static function Links($attr, $content):  string
+    public static function Links($attr, $content): string
     {
         $res = '<?php foreach ($links as $link) { ?>';
         $res .= $content;
@@ -133,7 +133,7 @@ class FrontendTemplate
         return $link;
     }
 
-    public static function LinkTitle($attr):    string
+    public static function LinkTitle($attr): string
     {
         $f = App::frontend()->template()->getFilters($attr);
 
@@ -179,7 +179,7 @@ class FrontendTemplate
         return '<?php echo ' . sprintf($f, '$link[\'link_lang\']') . '; ?>';
     }
 
-    public static function IfLinkXFN($attr, $content):  string
+    public static function IfLinkXFN($attr, $content): string
     {
         $res = '<?php if (!empty($link[\'link_xfn\'])) { ?>';
         $res .= $content;
