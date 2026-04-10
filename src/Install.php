@@ -14,7 +14,6 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\blogrollpage;
 
-use Dotclear\App;
 use Dotclear\Helper\Process\TraitProcess;
 
 class Install
@@ -34,7 +33,7 @@ class Install
 
         My::settings()->put('active', true, 'boolean', 'Enable blogrollpage plugin', false, true);
         My::settings()->put('blogrollpage_new_window', false, 'boolean', 'Enable opening links in new window', false, true);
-        
+
         return true;
     }
 }

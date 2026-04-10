@@ -163,7 +163,7 @@ class Manage
                             ->href(App::blog()->url() . App::url()->getURLFor('blogrollpage'))
                             ->class(['outgoing'])
                             ->text(App::blog()->url() . App::url()->getURLFor('blogrollpage') . '. '),
-                        (new Text(null, __('You may use Simple Menu predefined entry to link to it.'))),
+                        (new Text(null, __('You may use the widget or Simple Menu predefined entry to link to it.'))),
                     ]),
 
                 // Submit

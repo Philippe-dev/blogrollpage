@@ -14,9 +14,7 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\blogrollpage;
 
-
 use ArrayObject;
-use Dotclear\Core\Frontend\Tpl;
 use Dotclear\Plugin\TemplateHelper\Code;
 
 class FrontendTemplate
@@ -51,6 +49,4 @@ class FrontendTemplate
             attr: $attr,
         );
     }
-
-    
 }

@@ -14,7 +14,6 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\blogrollpage;
 
-
 use ArrayObject;
 use Dotclear\Core\Backend\Favorites;
 

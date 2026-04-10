@@ -17,6 +17,6 @@ L10n::$locales['Open links in new window'] = 'Ouvrir les liens dans une nouvelle
 L10n::$locales['Blogroll page description'] = 'La description de la page de liens';
 L10n::$locales['Blogroll description'] = 'Description de la page';
 L10n::$locales['Your blogroll URL:'] = 'URL de votre page de liens :';
-L10n::$locales['You may use Simple Menu predefined entry to link to it.'] = 'Vous pouvez aussi utiliser l\'entrée prédéfinie de Simple Menu pour faire un lien vers elle.';
+L10n::$locales['You may use the widget or Simple Menu predefined entry to link to it.'] = 'Vous pouvez utiliser le widget ou l\'entrée prédéfinie de Simple Menu pour faire un lien vers cette page.';
 L10n::$locales['Show your blogroll on a dedicated page'] = 'Afficher votre liste de liens sur une page dédiée';
 L10n::$locales['<p>My links list.</p>'] = '<p>Ma liste de liens.</p>';

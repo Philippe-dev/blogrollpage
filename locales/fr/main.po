@@ -43,8 +43,8 @@ msgid "Your blogroll URL:"
 msgstr "URL de votre page de liens :"
 
 #: src/Manage.php:166
-msgid "You may use Simple Menu predefined entry to link to it."
-msgstr "Vous pouvez aussi utiliser l'entrée prédéfinie de Simple Menu pour faire un lien vers elle."
+msgid "You may use the widget or Simple Menu predefined entry to link to it."
+msgstr "Vous pouvez utiliser le widget ou l'entrée prédéfinie de Simple Menu pour faire un lien vers cette page."
 
 #: src/SimpleMenuBehaviors.php:45
 msgid "Show your blogroll on a dedicated page"
