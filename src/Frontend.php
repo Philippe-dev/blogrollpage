@@ -56,7 +56,7 @@ class Frontend
         App::frontend()->template()->addValue('BlogrollPageLinkXFN', FrontendTemplate::LinkXFN(...));
 
         App::behavior()->addBehaviors([
-            'publicBreadcrumb' => FrontendTemplate::publicBreadcrumb(...),
+            'publicBreadcrumb' => FrontendBehaviors::publicBreadcrumb(...),
             'initWidgets' => Widgets::initWidgets(...),
         ]);
 

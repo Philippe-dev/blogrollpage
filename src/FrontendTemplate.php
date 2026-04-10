@@ -52,19 +52,6 @@ class FrontendTemplate
         );
     }
 
-    public static function publicBreadcrumb($context, $separator): string
-    {
-        if ($context == 'blogrollpage') {
-            if (App::frontend()->context()->blogrollpage) {
-                $u = App::blog()->url() . App::url()->getURLFor('blogrollpage');
-
-                return '<a href="' . $u . '">' . __('Links') . '</a>' . $separator . App::frontend()->context()->blogrollpage;
-            }
-
-            return __('Links');
-        }
-    }
-
     public static function BlogrollPage($attr, $content): string
     {
         $res = '<?php foreach (App::frontend()->context()->blogrollpage_blogroll as $category => $links) { ?>';
