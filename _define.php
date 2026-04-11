@@ -13,12 +13,17 @@ $this->registerModule(
     'Blogroll page',
     'Show your blogroll on a dedicated page',
     'Simon Richard and contributors',
-    '4.8',
+    '4.9',
     [
         'date'        => '2026-04-11T00:00:08+0100',
-        'requires'    => [['core', '2.36']],
+        'requires' => [
+            ['core', '2.36'],
+            ['TemplateHelper'],
+        ],
         'permissions' => 'My',
         'type'        => 'plugin',
+        'settings'    => [
+        ],
         'support'     => 'https://github.com/Philippe-dev/blogrollpage',
     ]
 );
