@@ -1,6 +1,6 @@
 # Page de liens
 
-![Release 4.9](https://img.shields.io/badge/Release-4.9-b7d7ee)
+![Release 5.0](https://img.shields.io/badge/Release-5.0-b7d7ee)
 ![WTFPL License](https://img.shields.io/badge/License-WTFPL-a5cc52)
 ![Dotclear 2.36](https://img.shields.io/badge/Dotclear-2.36-137bbb)
 
