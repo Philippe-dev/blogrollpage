@@ -52,16 +52,20 @@ class Manage
 
         if ($_POST !== []) {
             try {
-                $active = !empty($_POST['active']);
+                $active                  = !empty($_POST['active']);
+                $blogrollpage_new_window = !empty($_POST['blogrollpage_new_window']);
 
                 $page_title  = $_POST['page_title'];
                 $page_header = $_POST['page_header'];
 
                 // Everything's fine, save options
                 $settings = My::settings();
-                $settings->put('active', $active, 'boolean');
-                $settings->put('page_title', $page_title, 'string', 'Blogroll page title');
-                $settings->put('page_header', $page_header, 'string', 'Blogroll page header');
+
+                $settings->put('active', $active, App::blogWorkspace()::NS_BOOL);
+                $settings->put('blogrollpage_new_window', $blogrollpage_new_window, App::blogWorkspace()::NS_BOOL);
+
+                $settings->put('page_title', $page_title, App::blogWorkspace()::NS_STRING, 'Blogroll page title');
+                $settings->put('page_header', $page_header, App::blogWorkspace()::NS_STRING, 'Blogroll page header');
 
                 App::blog()->triggerBlog();
                 App::backend()->notices()->addSuccessNotice(__('Setting have been successfully updated.'));
@@ -104,9 +108,10 @@ class Manage
 
         $settings = My::settings();
 
-        $active      = $settings->active;
-        $page_title  = $settings->page_title;
-        $page_header = $settings->page_header;
+        $active                  = $settings->active;
+        $blogrollpage_new_window = $settings->blogrollpage_new_window;
+        $page_title              = $settings->page_title;
+        $page_header             = $settings->page_header;
 
         if ($page_title === null) {
             $page_title = __('Blogroll page');
@@ -132,6 +137,12 @@ class Manage
                     (new Checkbox('active', $active))
                         ->value(1)
                         ->label((new Label(__('Activate'), Label::INSIDE_TEXT_AFTER))),
+                ]),
+
+                (new Para())->items([
+                    (new Checkbox('blogrollpage_new_window', $blogrollpage_new_window))
+                        ->value(1)
+                        ->label((new Label(__('Open links in new window'), Label::INSIDE_TEXT_AFTER))),
                 ]),
 
                 (new Para())->items([

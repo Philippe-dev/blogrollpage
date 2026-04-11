@@ -14,7 +14,10 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\blogrollpage;
 
+use Dotclear\App;
 use Dotclear\Helper\Process\TraitProcess;
+use Dotclear\Interface\Core\BlogWorkspaceInterface;
+use Exception;
 
 class Install
 {
@@ -31,8 +34,13 @@ class Install
             return false;
         }
 
-        My::settings()->put('active', true, 'boolean', 'Enable blogrollpage plugin', false, true);
-        My::settings()->put('blogrollpage_new_window', false, 'boolean', 'Enable opening links in new window', false, true);
+        try {
+            $settings = My::settings();
+            $settings->put('active', true, App::blogWorkspace()::NS_BOOL, 'Enable blogrollpage plugin', false, true);
+            $settings->put('blogrollpage_new_window', false, App::blogWorkspace()::NS_BOOL, 'Enable opening links in new window', false, true);
+        } catch (Exception $exception) {
+            App::error()->add($exception->getMessage());
+        }
 
         return true;
     }
