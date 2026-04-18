@@ -33,13 +33,13 @@ class FrontendUrl extends Url
             if (!$blogroll) {
                 App::url()->p404();
             } else {
-                App::frontend()->context()->blogrollpage_cat = $args;
+                App::frontend()->context()->brp_title = $args;
             }
         } else {
             $blogroll = self::getBlogroll();
         }
 
-        App::frontend()->context()->blogrollpage_blogroll = $blogroll;
+        App::frontend()->context()->brp_blogroll = $blogroll;
 
         App::frontend()->template()->appendPath(My::tplPath());
         App::url()::serveDocument('blogroll.html');

@@ -24,7 +24,7 @@ class FrontendTemplateCode
     public static function BlogrollPage(
         string $_content_HTML,
     ): void {
-        foreach (App::frontend()->context()->blogrollpage_blogroll as $category => $links) : ?>
+        foreach (App::frontend()->context()->brp_blogroll as $category => $links) : ?>
             $_content_HTML
             <?php endforeach;
     }
@@ -35,9 +35,9 @@ class FrontendTemplateCode
     public static function BlogrollPageIfTitle(
         string $_content_HTML,
     ): void {
-        $brp_cat = App::frontend()->context()->blogrollpage_cat;
+        $brp_title = App::frontend()->context()->brp_title;
 
-        if ($brp_cat !== '') : ?>
+        if ($brp_title !== '') : ?>
             $_content_HTML
             <?php endif;
     }
@@ -143,6 +143,36 @@ class FrontendTemplateCode
 
         echo App::frontend()->context()::global_filters(
             $link,
+            $_params_,
+            $_tag_
+        );
+    }
+
+    /**
+     * PHP code for tpl:BlogrollPageIfLinkDesc block
+     */
+    public static function BlogrollPageIfLinkDesc(
+        string $_content_HTML,
+    ): void {
+        // (!$desc) ? '' : '';
+
+        if ($desc !== '') : ?>
+            $_content_HTML
+            <?php endif;
+    }
+
+    /**
+     * PHP code for tpl:BlogrollPageLinkDesc value
+     *
+     * @param      array<int|string, mixed>     $_params_  The parameters
+     */
+    public static function BlogrollPageLinkDesc(
+        string $_id_HTML,
+        array $_params_,
+        string $_tag_
+    ): void {
+        echo App::frontend()->context()::global_filters(
+            $desc,
             $_params_,
             $_tag_
         );

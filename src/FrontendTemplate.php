@@ -150,65 +150,35 @@ class FrontendTemplate
         );
     }
 
-    public static function LinkTitle($attr): string
+    /**
+     * @param      array<string, mixed>|\ArrayObject<string, mixed>  $attr      The attribute
+     * @param      string                                            $content   The content
+     */
+    public static function BlogrollPageIfLinkDesc(array|ArrayObject $attr, string $content): string
     {
-        $f = App::frontend()->template()->getFilters($attr);
+        $attr = $attr instanceof ArrayObject ? $attr : new ArrayObject($attr);
 
-        return '<?php echo ' . sprintf($f, '$link[\'link_title\']') . '; ?>';
+        return Code::getPHPTemplateBlockCode(
+            FrontendTemplateCode::BlogrollPageIfLinkDesc(...),
+            [],
+            $content,
+            $attr,
+        );
     }
 
-    public static function LinkHref($attr): string
+    /**
+     * @param      array<string, mixed>|\ArrayObject<string, mixed>  $attr      The attribute
+     */
+    public static function BlogrollPageLinkDesc(array|ArrayObject $attr): string
     {
-        $f = App::frontend()->template()->getFilters($attr);
+        $attr = $attr instanceof ArrayObject ? $attr : new ArrayObject($attr);
 
-        return '<?php echo ' . sprintf($f, '$link[\'link_href\']') . '; ?>';
-    }
-
-    public static function IfLinkDesc($attr, $content): string
-    {
-        $res = '<?php if (!empty($link[\'link_desc\'])) { ?>';
-        $res .= $content;
-        $res .= '<?php } ?>';
-
-        return $res;
-    }
-
-    public static function LinkDesc($attr): string
-    {
-        $f = App::frontend()->template()->getFilters($attr);
-
-        return '<?php echo ' . sprintf($f, '$link[\'link_desc\']') . '; ?>';
-    }
-
-    public static function IfLinkLang($attr, $content): string
-    {
-        $res = '<?php if (!empty($link[\'link_lang\'])) { ?>';
-        $res .= $content;
-        $res .= '<?php } ?>';
-
-        return $res;
-    }
-
-    public static function LinkLang($attr): string
-    {
-        $f = App::frontend()->template()->getFilters($attr);
-
-        return '<?php echo ' . sprintf($f, '$link[\'link_lang\']') . '; ?>';
-    }
-
-    public static function IfLinkXFN($attr, $content): string
-    {
-        $res = '<?php if (!empty($link[\'link_xfn\'])) { ?>';
-        $res .= $content;
-        $res .= '<?php } ?>';
-
-        return $res;
-    }
-
-    public static function LinkXFN($attr): string
-    {
-        $f = App::frontend()->template()->getFilters($attr);
-
-        return '<?php echo ' . sprintf($f, '$link[\'link_xfn\']') . '; ?>';
+        return Code::getPHPTemplateValueCode(
+            FrontendTemplateCode::BlogrollPageLinkDesc(...),
+            [
+                My::id(),
+            ],
+            attr: $attr,
+        );
     }
 }
