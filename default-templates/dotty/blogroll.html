@@ -1,6 +1,6 @@
 {{tpl:extends parent="__layout.html"}}
 <tpl:Block name="head-title">
-	<title>{{tpl:BlogrollPageTitle}} - {{tpl:BlogName encode_html="1"}}</title>
+	<title><tpl:BlogrollPageIfTitle>{{tpl:BlogrollPageTitle encode_html="1"}} - </tpl:BlogrollPageIfTitle>{{tpl:BlogName encode_html="1"}}</title>
 </tpl:Block>
 <tpl:Block name="meta-robots">
 	<meta name="ROBOTS" content="{{tpl:BlogMetaRobots robots=" NOINDEX,NOARCHIVE"}}">
@@ -17,7 +17,9 @@
 
 <tpl:Block name="main-content">
 	<header id="content-info">
-		<h2>{{tpl:BlogrollPageTitle}}</h2>
+		<tpl:BlogrollPageIfTitle>
+			<h2>{{tpl:BlogrollPageTitle encode_html="1"}}</h2>
+		</tpl:BlogrollPageIfTitle>
 		
 	</header>
 	<article class="content-inner">

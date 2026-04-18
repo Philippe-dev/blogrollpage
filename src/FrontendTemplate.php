@@ -23,6 +23,22 @@ class FrontendTemplate
 {
     /**
      * @param      array<string, mixed>|\ArrayObject<string, mixed>  $attr      The attribute
+     * @param      string                                            $content   The content
+     */
+    public static function BlogrollPage(array|ArrayObject $attr, string $content): string
+    {
+        $attr = $attr instanceof ArrayObject ? $attr : new ArrayObject($attr);
+
+        return Code::getPHPTemplateBlockCode(
+            FrontendTemplateCode::BlogrollPage(...),
+            [],
+            $content,
+            $attr,
+        );
+    }
+
+    /**
+     * @param      array<string, mixed>|\ArrayObject<string, mixed>  $attr      The attribute
      */
     public static function BlogrollPageTitle(array|ArrayObject $attr): string
     {
@@ -52,25 +68,25 @@ class FrontendTemplate
         );
     }
 
-    public static function BlogrollPage($attr, $content): string
+    /**
+     * @param      array<string, mixed>|\ArrayObject<string, mixed>  $attr      The attribute
+     * @param      string                                            $content   The content
+     */
+    public static function BlogrollPageIfTitle(array|ArrayObject $attr, string $content): string
     {
-        $res = '<?php foreach (App::frontend()->context()->blogrollpage_blogroll as $category => $links) { ?>';
-        $res .= $content;
-        $res .= '<?php } ?>';
+        $attr = $attr instanceof ArrayObject ? $attr : new ArrayObject($attr);
 
-        return $res;
+        return Code::getPHPTemplateBlockCode(
+            FrontendTemplateCode::BlogrollPageIfTitle(...),
+            [],
+            $content,
+            $attr,
+        );
+
+        return $content;
     }
 
-    public static function IfTitle($attr, $content): string
-    {
-        $res = '<?php $brp_cat = App::frontend()->context()->blogrollpage; if (!empty($brp_cat)) { ?>';
-        $res .= $content;
-        $res .= '<?php } ?>';
-
-        return $res;
-    }
-
-    public static function IfCategoryTitle($attr, $content): string
+     public static function IfCategoryTitle($attr, $content)
     {
         $res = '<?php if (!empty($category)) { ?>';
         $res .= $content;
@@ -79,11 +95,20 @@ class FrontendTemplate
         return $res;
     }
 
-    public static function CategoryTitle($attr): string
+    /**
+     * @param      array<string, mixed>|\ArrayObject<string, mixed>  $attr      The attribute
+     */
+    public static function BlogrollPageCategoryTitle(array|ArrayObject $attr): string
     {
-        $f = App::frontend()->template()->getFilters($attr);
+        $attr = $attr instanceof ArrayObject ? $attr : new ArrayObject($attr);
 
-        return '<?php echo ' . sprintf($f, '$category') . '; ?>';
+        return Code::getPHPTemplateValueCode(
+            FrontendTemplateCode::BlogrollPageCategoryTitle(...),
+            [
+                My::id(),
+            ],
+            attr: $attr,
+        );
     }
 
     public static function Links($attr, $content): string
