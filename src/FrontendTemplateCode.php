@@ -154,8 +154,6 @@ class FrontendTemplateCode
     public static function BlogrollPageIfLinkDesc(
         string $_content_HTML,
     ): void {
-        // (!$desc) ? '' : '';
-
         if ($desc !== '') : ?>
             $_content_HTML
             <?php endif;
