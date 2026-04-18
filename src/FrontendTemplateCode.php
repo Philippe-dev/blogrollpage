@@ -30,6 +30,19 @@ class FrontendTemplateCode
     }
 
     /**
+     * PHP code for tpl:BlogrollPageIfTitle block
+     */
+    public static function BlogrollPageIfTitle(
+        string $_content_HTML,
+    ): void {
+        $brp_cat = App::frontend()->context()->blogrollpage_cat;
+
+        if ($brp_cat !== '') : ?>
+            $_content_HTML
+            <?php endif;
+    }
+
+    /**
      * PHP code for tpl:BlogrollPageTitle value
      *
      * @param      array<int|string, mixed>     $_params_  The parameters
@@ -64,32 +77,18 @@ class FrontendTemplateCode
     }
 
     /**
-     * PHP code for tpl:BlogrollPageIfTitle block
-     */
-    public static function BlogrollPageIfTitle(
-        string $_content_HTML,
-    ): void {
-        $brp_cat = App::frontend()->context()->blogrollpage_cat;
-        
-        if ($brp_cat !== '') : ?>
-            $_content_HTML
-            <?php endif;
-    }
-
-    /**
      * PHP code for tpl:BlogrollPageIfCategoryTitle block
      */
     public static function BlogrollPageIfCategoryTitle(
         string $_content_HTML,
     ): void {
-        
         if ($category !== '') : ?>
             $_content_HTML
             <?php endif;
     }
 
     /**
-     * PHP code for tpl:CategoryTitle value
+     * PHP code for tpl:BlogrollPageCategoryTitle value
      *
      * @param      array<int|string, mixed>     $_params_  The parameters
      */
@@ -114,5 +113,38 @@ class FrontendTemplateCode
         foreach ($links as $link) : ?>
             $_content_HTML
             <?php endforeach;
+    }
+
+    /**
+     * PHP code for tpl:BlogrollPageLink value
+     *
+     * @param      array<int|string, mixed>     $_params_  The parameters
+     */
+    public static function BlogrollPageLink(
+        string $_id_HTML,
+        array $_params_,
+        string $_tag_
+    ): void {
+        $new_window = (bool) App::blog()->settings()->blogrollpage->blogrollpage_new_window;
+        $title      = $link['link_title'];
+        $href       = $link['link_href'];
+        $desc       = $link['link_desc'];
+        $lang       = $link['link_lang'];
+        $xfn        = $link['link_xfn'];
+
+        $link = '<a href="' . Html::escapeHTML($href) . '"' .
+        ((!$lang) ? '' : ' hreflang="' . Html::escapeHTML($lang) . '"') .
+        ((!$desc) ? '' : ' title="' . Html::escapeHTML($desc) . '"') .
+        ((!$xfn) ? '' : ' rel="' . Html::escapeHTML($xfn) . '"') .
+        ((!$new_window) ? '' : ' onclick="window.open(this.href); return false;"') .
+        '>' .
+        Html::escapeHTML($title) .
+        '</a>';
+
+        echo App::frontend()->context()::global_filters(
+            $link,
+            $_params_,
+            $_tag_
+        );
     }
 }

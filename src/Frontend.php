@@ -39,13 +39,14 @@ class Frontend
         }
 
         App::frontend()->template()->addBlock('BlogrollPage', FrontendTemplate::BlogrollPage(...));
+        App::frontend()->template()->addBlock('BlogrollPageIfTitle', FrontendTemplate::BlogrollPageIfTitle(...));
         App::frontend()->template()->addValue('BlogrollPageTitle', FrontendTemplate::BlogrollPageTitle(...));
         App::frontend()->template()->addValue('BlogrollPageHeader', FrontendTemplate::BlogrollPageHeader(...));
-        App::frontend()->template()->addBlock('BlogrollPageIfTitle', FrontendTemplate::BlogrollPageIfTitle(...));
         App::frontend()->template()->addBlock('BlogrollPageIfCategoryTitle', FrontendTemplate::BlogrollPageIfCategoryTitle(...));
         App::frontend()->template()->addValue('BlogrollPageCategoryTitle', FrontendTemplate::BlogrollPageCategoryTitle(...));
         App::frontend()->template()->addBlock('BlogrollPageLinks', FrontendTemplate::BlogrollPageLinks(...));
-        App::frontend()->template()->addValue('BlogrollPageLink', FrontendTemplate::Link(...));
+        App::frontend()->template()->addValue('BlogrollPageLink', FrontendTemplate::BlogrollPageLink(...));
+        
         App::frontend()->template()->addValue('BlogrollPageLinkTitle', FrontendTemplate::LinkTitle(...));
         App::frontend()->template()->addValue('BlogrollPageLinkHref', FrontendTemplate::LinkHref(...));
         App::frontend()->template()->addBlock('BlogrollPageIfLinkDesc', FrontendTemplate::IfLinkDesc(...));
@@ -57,7 +58,7 @@ class Frontend
 
         App::behavior()->addBehaviors([
             'publicBreadcrumb' => FrontendBehaviors::publicBreadcrumb(...),
-            'initWidgets' => Widgets::initWidgets(...),
+            'initWidgets'      => Widgets::initWidgets(...),
         ]);
 
         return true;

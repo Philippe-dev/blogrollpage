@@ -39,6 +39,24 @@ class FrontendTemplate
 
     /**
      * @param      array<string, mixed>|\ArrayObject<string, mixed>  $attr      The attribute
+     * @param      string                                            $content   The content
+     */
+    public static function BlogrollPageIfTitle(array|ArrayObject $attr, string $content): string
+    {
+        $attr = $attr instanceof ArrayObject ? $attr : new ArrayObject($attr);
+
+        return Code::getPHPTemplateBlockCode(
+            FrontendTemplateCode::BlogrollPageIfTitle(...),
+            [],
+            $content,
+            $attr,
+        );
+
+        return $content;
+    }
+
+    /**
+     * @param      array<string, mixed>|\ArrayObject<string, mixed>  $attr      The attribute
      */
     public static function BlogrollPageTitle(array|ArrayObject $attr): string
     {
@@ -66,24 +84,6 @@ class FrontendTemplate
             ],
             attr: $attr,
         );
-    }
-
-    /**
-     * @param      array<string, mixed>|\ArrayObject<string, mixed>  $attr      The attribute
-     * @param      string                                            $content   The content
-     */
-    public static function BlogrollPageIfTitle(array|ArrayObject $attr, string $content): string
-    {
-        $attr = $attr instanceof ArrayObject ? $attr : new ArrayObject($attr);
-
-        return Code::getPHPTemplateBlockCode(
-            FrontendTemplateCode::BlogrollPageIfTitle(...),
-            [],
-            $content,
-            $attr,
-        );
-
-        return $content;
     }
 
     /**
@@ -134,29 +134,20 @@ class FrontendTemplate
         );
     }
 
-    public static function Link($attr): string
+    /**
+     * @param      array<string, mixed>|\ArrayObject<string, mixed>  $attr      The attribute
+     */
+    public static function BlogrollPageLink(array|ArrayObject $attr): string
     {
-        return '<?php echo ' . self::class . '::makeLink($link,App::blog()->settings()->blogrollpage->blogrollpage_new_window); ?>';
-    }
+        $attr = $attr instanceof ArrayObject ? $attr : new ArrayObject($attr);
 
-    public static function makeLink($link, $new_window = null): string
-    {
-        $title = $link['link_title'];
-        $href  = $link['link_href'];
-        $desc  = $link['link_desc'];
-        $lang  = $link['link_lang'];
-        $xfn   = $link['link_xfn'];
-
-        $link = '<a href="' . Html::escapeHTML($href) . '"' .
-        ((!$lang) ? '' : ' hreflang="' . Html::escapeHTML($lang) . '"') .
-        ((!$desc) ? '' : ' title="' . Html::escapeHTML($desc) . '"') .
-        ((!$xfn) ? '' : ' rel="' . Html::escapeHTML($xfn) . '"') .
-        ((!$new_window) ? '' : ' onclick="window.open(this.href); return false;"') .
-        '>' .
-        Html::escapeHTML($title) .
-        '</a>';
-
-        return $link;
+        return Code::getPHPTemplateValueCode(
+            FrontendTemplateCode::BlogrollPageLink(...),
+            [
+                My::id(),
+            ],
+            attr: $attr,
+        );
     }
 
     public static function LinkTitle($attr): string
