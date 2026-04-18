@@ -77,6 +77,18 @@ class FrontendTemplateCode
     }
 
     /**
+     * PHP code for tpl:BlogrollPageIfCategoryTitle block
+     */
+    public static function BlogrollPageIfCategoryTitle(
+        string $_content_HTML,
+    ): void {
+        
+        if ($category !== '') : ?>
+            $_content_HTML
+            <?php endif;
+    }
+
+    /**
      * PHP code for tpl:CategoryTitle value
      *
      * @param      array<int|string, mixed>     $_params_  The parameters
@@ -91,5 +103,16 @@ class FrontendTemplateCode
             $_params_,
             $_tag_
         );
+    }
+
+    /**
+     * PHP code for tpl:BlogrollPageLinks block
+     */
+    public static function BlogrollPageLinks(
+        string $_content_HTML,
+    ): void {
+        foreach ($links as $link) : ?>
+            $_content_HTML
+            <?php endforeach;
     }
 }

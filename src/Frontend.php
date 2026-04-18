@@ -42,9 +42,9 @@ class Frontend
         App::frontend()->template()->addValue('BlogrollPageTitle', FrontendTemplate::BlogrollPageTitle(...));
         App::frontend()->template()->addValue('BlogrollPageHeader', FrontendTemplate::BlogrollPageHeader(...));
         App::frontend()->template()->addBlock('BlogrollPageIfTitle', FrontendTemplate::BlogrollPageIfTitle(...));
-        App::frontend()->template()->addBlock('BlogrollPageIfCategoryTitle', FrontendTemplate::IfCategoryTitle(...));
+        App::frontend()->template()->addBlock('BlogrollPageIfCategoryTitle', FrontendTemplate::BlogrollPageIfCategoryTitle(...));
         App::frontend()->template()->addValue('BlogrollPageCategoryTitle', FrontendTemplate::BlogrollPageCategoryTitle(...));
-        App::frontend()->template()->addBlock('BlogrollPageLinks', FrontendTemplate::Links(...));
+        App::frontend()->template()->addBlock('BlogrollPageLinks', FrontendTemplate::BlogrollPageLinks(...));
         App::frontend()->template()->addValue('BlogrollPageLink', FrontendTemplate::Link(...));
         App::frontend()->template()->addValue('BlogrollPageLinkTitle', FrontendTemplate::LinkTitle(...));
         App::frontend()->template()->addValue('BlogrollPageLinkHref', FrontendTemplate::LinkHref(...));

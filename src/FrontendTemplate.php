@@ -86,13 +86,20 @@ class FrontendTemplate
         return $content;
     }
 
-     public static function IfCategoryTitle($attr, $content)
+    /**
+     * @param      array<string, mixed>|\ArrayObject<string, mixed>  $attr      The attribute
+     * @param      string                                            $content   The content
+     */
+    public static function BlogrollPageIfCategoryTitle(array|ArrayObject $attr, string $content): string
     {
-        $res = '<?php if (!empty($category)) { ?>';
-        $res .= $content;
-        $res .= '<?php } ?>';
+        $attr = $attr instanceof ArrayObject ? $attr : new ArrayObject($attr);
 
-        return $res;
+        return Code::getPHPTemplateBlockCode(
+            FrontendTemplateCode::BlogrollPageIfCategoryTitle(...),
+            [],
+            $content,
+            $attr,
+        );
     }
 
     /**
@@ -111,13 +118,20 @@ class FrontendTemplate
         );
     }
 
-    public static function Links($attr, $content): string
+    /**
+     * @param      array<string, mixed>|\ArrayObject<string, mixed>  $attr      The attribute
+     * @param      string                                            $content   The content
+     */
+    public static function BlogrollPageLinks(array|ArrayObject $attr, string $content): string
     {
-        $res = '<?php foreach ($links as $link) { ?>';
-        $res .= $content;
-        $res .= '<?php } ?>';
+        $attr = $attr instanceof ArrayObject ? $attr : new ArrayObject($attr);
 
-        return $res;
+        return Code::getPHPTemplateBlockCode(
+            FrontendTemplateCode::BlogrollPageLinks(...),
+            [],
+            $content,
+            $attr,
+        );
     }
 
     public static function Link($attr): string
