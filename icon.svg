@@ -42,9 +42,9 @@
      inkscape:window-height="1012"
      id="namedview12"
      showgrid="false"
-     inkscape:zoom="1.7401456"
-     inkscape:cx="-124.98954"
-     inkscape:cy="64.937095"
+     inkscape:zoom="6.9605824"
+     inkscape:cx="-18.892097"
+     inkscape:cy="46.835161"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -67,7 +67,7 @@
      id="text827" />
   <g
      id="g829"
-     transform="matrix(0.04271512,0,0,0.04271512,9.1882154,5.2393218)">
+     transform="matrix(0.04030455,0,0,0.04271512,9.4967679,5.2393218)">
     <path
        d="m 128,469.33333 h 85.33333 v 85.33334 H 128 Z m 0,-170.66666 h 85.33333 V 384 H 128 Z M 128,640 h 85.33333 v 85.33333 H 128 Z m 0,-512 h 85.33333 v 85.33333 H 128 Z m 0,682.66667 h 85.33333 V 896 H 128 Z"
        fill="#2196f3"
