@@ -35,7 +35,7 @@ class FrontendTemplateCode
     public static function BlogrollPageIfTitle(
         string $_content_HTML,
     ): void {
-        $brp_title = App::frontend()->context()->brp_title;
+        $brp_title = App::blog()->settings()->blogrollpage->page_title;
 
         if ($brp_title !== '') : ?>
             $_content_HTML
