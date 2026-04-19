@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\blogrollpage;
 
 use Dotclear\App;
+use Dotclear\Helper\Html\Html;
 
 class FrontendTemplateCode
 {
