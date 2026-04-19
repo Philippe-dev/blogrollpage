@@ -21,6 +21,12 @@ use Dotclear\Plugin\blogroll\Status\Link;
 
 class FrontendUrl extends Url
 {
+    /**
+     * Serve blogrollpage template page
+     *
+     * @param string|null $args
+     * @return void
+     */
     public static function blogroll(?string $args): void
     {
         $settings = My::settings();
@@ -46,7 +52,14 @@ class FrontendUrl extends Url
         exit;
     }
 
-    public static function getBlogroll($category = null, $rand = null)
+    /**
+     * Get blogroll links from dotclear's blogroll plugin
+     *
+     * @param [type] $category
+     * @param [type] $rand
+     * @return array
+     */
+    public static function getBlogroll($category = null, $rand = null): array
     {
         $blogroll = new Blogroll(App::blog());
 
