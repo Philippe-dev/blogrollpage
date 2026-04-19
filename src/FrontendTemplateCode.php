@@ -133,13 +133,13 @@ class FrontendTemplateCode
         $lang       = $link['link_lang'];
         $xfn        = $link['link_xfn'];
 
-        $link = '<a href="' . Dotclear\Helper\Html\Html::escapeHTML($href) . '"' .
-        ((!$lang) ? '' : ' hreflang="' . Dotclear\Helper\Html\Html::escapeHTML($lang) . '"') .
-        ((!$desc) ? '' : ' title="' . Dotclear\Helper\Html\Html::escapeHTML($desc) . '"') .
-        ((!$xfn) ? '' : ' rel="' . Dotclear\Helper\Html\Html::escapeHTML($xfn) . '"') .
+        $link = '<a href="' . \Dotclear\Helper\Html\Html::escapeHTML($href) . '"' .
+        ((!$lang) ? '' : ' hreflang="' . \Dotclear\Helper\Html\Html::escapeHTML($lang) . '"') .
+        ((!$desc) ? '' : ' title="' . \Dotclear\Helper\Html\Html::escapeHTML($desc) . '"') .
+        ((!$xfn) ? '' : ' rel="' . \Dotclear\Helper\Html\Html::escapeHTML($xfn) . '"') .
         ((!$new_window) ? '' : ' onclick="window.open(this.href); return false;"') .
         '>' .
-        Dotclear\Helper\Html\Html::escapeHTML($title) .
+        \Dotclear\Helper\Html\Html::escapeHTML($title) .
         '</a>';
 
         echo App::frontend()->context()::global_filters(
