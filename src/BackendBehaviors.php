@@ -15,10 +15,21 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\blogrollpage;
 
 use ArrayObject;
+use Dotclear\Helper\Html\Form\Checkbox;
+use Dotclear\Helper\Html\Form\Fieldset;
+use Dotclear\Helper\Html\Form\Label;
+use Dotclear\Helper\Html\Form\Legend;
+use Dotclear\Helper\Html\Form\Para;
+use Dotclear\Interface\Core\BlogSettingsInterface;
 
 class BackendBehaviors
 {
-    public static function adminBlogPreferencesForm(BlogSettingsInterface $settings): string
+    /*
+     * Display blogrollpage fieldset settings.
+     *
+     * @param   BlogSettingsInterface   $settings   The settings
+     */
+    public static function adminBlogPreferencesForm(BlogSettingsInterface $settings): void
     {
         // Add fieldset for plugin options
         echo
@@ -37,14 +48,17 @@ class BackendBehaviors
             ]),
         ])
         ->render();
-
-        return '';
     }
 
+    /*
+     * Save blogrollpage settings.
+     *
+     * @param   BlogSettingsInterface   $settings   The settings
+     */
     public static function adminBeforeBlogSettingsUpdate(BlogSettingsInterface $settings): void
     {
-        $settings->blogrollpage->put('active', !empty($_POST['active']), 'boolean');
-        $settings->blogrollpage->put('blogrollpage_new_window', !empty($_POST['blogrollpage_new_window']), 'boolean');
+        $settings->put('active', $active, App::blogWorkspace()::NS_BOOL);
+        $settings->put('blogrollpage_new_window', $blogrollpage_new_window, App::blogWorkspace()::NS_BOOL);
     }
 
     /**
