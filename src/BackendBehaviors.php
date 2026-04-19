@@ -15,24 +15,36 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\blogrollpage;
 
 use ArrayObject;
-use Dotclear\Core\Backend\Favorites;
 
 class BackendBehaviors
 {
-    /**
-     * @param      Favorites  $favs   The favs
-     */
-    public static function adminDashboardFavorites(Favorites $favs): string
+    public static function adminBlogPreferencesForm(BlogSettingsInterface $settings): string
     {
-        $favs->register('blogrollpage', [
-            'title'       => __('Blogroll page'),
-            'url'         => My::manageUrl(),
-            'small-icon'  => My::icons(),
-            'large-icon'  => My::icons(),
-            'permissions' => My::checkContext(My::MENU),
-        ]);
+        // Add fieldset for plugin options
+        echo
+        (new Fieldset('blogrollpage'))
+        ->legend((new Legend(__('Blogroll page'))))
+        ->fields([
+            (new Para())->items([
+                (new Checkbox('active', $settings->blogrollpage->active))
+                    ->value(1)
+                    ->label((new Label(__('Enable blogroll page'), Label::INSIDE_TEXT_AFTER))),
+            ]),
+            (new Para())->items([
+                (new Checkbox('blogrollpage_new_window', $settings->blogrollpage->blogrollpage_new_window))
+                    ->value(1)
+                    ->label((new Label(__('Open links in new window'), Label::INSIDE_TEXT_AFTER))),
+            ]),
+        ])
+        ->render();
 
         return '';
+    }
+
+    public static function adminBeforeBlogSettingsUpdate(BlogSettingsInterface $settings): void
+    {
+        $settings->blogrollpage->put('active', !empty($_POST['active']), 'boolean');
+        $settings->blogrollpage->put('blogrollpage_new_window', !empty($_POST['blogrollpage_new_window']), 'boolean');
     }
 
     /**

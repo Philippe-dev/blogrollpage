@@ -16,13 +16,7 @@ namespace Dotclear\Plugin\blogrollpage;
 
 use Dotclear\App;
 use Dotclear\Core\Backend\Favorites;
-use Dotclear\Helper\Html\Form\Checkbox;
-use Dotclear\Helper\Html\Form\Fieldset;
-use Dotclear\Helper\Html\Form\Label;
-use Dotclear\Helper\Html\Form\Legend;
-use Dotclear\Helper\Html\Form\Para;
 use Dotclear\Helper\Process\TraitProcess;
-use Dotclear\Interface\Core\BlogSettingsInterface;
 
 class Backend
 {
@@ -56,8 +50,8 @@ class Backend
         ]);
 
         App::behavior()->addBehaviors([
-            'adminBlogPreferencesFormV2'    => [self::class,'adminBlogPreferencesForm'],
-            'adminBeforeBlogSettingsUpdate' => [self::class,'adminBeforeBlogSettingsUpdate'],
+            'adminBlogPreferencesFormV2'    => BackendBehaviors::adminBlogPreferencesForm(...),
+            'adminBeforeBlogSettingsUpdate' => BackendBehaviors::adminBeforeBlogSettingsUpdate(...),
             'adminRteFlagsV2'               => BackendBehaviors::adminRteFlags(...),
             'adminSimpleMenuAddType'        => SimpleMenuBehaviors::adminSimpleMenuAddType(...),
             'adminSimpleMenuBeforeEdit'     => SimpleMenuBehaviors::adminSimpleMenuBeforeEdit(...),
@@ -70,34 +64,5 @@ class Backend
         }
 
         return true;
-    }
-
-    public static function adminBlogPreferencesForm(BlogSettingsInterface $settings): string
-    {
-        // Add fieldset for plugin options
-        echo
-        (new Fieldset('blogrollpage'))
-        ->legend((new Legend(__('Blogroll page'))))
-        ->fields([
-            (new Para())->items([
-                (new Checkbox('active', $settings->blogrollpage->active))
-                    ->value(1)
-                    ->label((new Label(__('Enable blogroll page'), Label::INSIDE_TEXT_AFTER))),
-            ]),
-            (new Para())->items([
-                (new Checkbox('blogrollpage_new_window', $settings->blogrollpage->blogrollpage_new_window))
-                    ->value(1)
-                    ->label((new Label(__('Open links in new window'), Label::INSIDE_TEXT_AFTER))),
-            ]),
-        ])
-        ->render();
-
-        return '';
-    }
-
-    public static function adminBeforeBlogSettingsUpdate(BlogSettingsInterface $settings): void
-    {
-        $settings->blogrollpage->put('active', !empty($_POST['active']), 'boolean');
-        $settings->blogrollpage->put('blogrollpage_new_window', !empty($_POST['blogrollpage_new_window']), 'boolean');
     }
 }
