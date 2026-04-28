@@ -16,7 +16,6 @@ namespace Dotclear\Plugin\blogrollpage;
 
 use Dotclear\App;
 use Dotclear\Helper\Process\TraitProcess;
-use Dotclear\Interface\Core\BlogWorkspaceInterface;
 use Exception;
 
 class Install

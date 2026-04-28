@@ -15,13 +15,13 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\blogrollpage;
 
 use ArrayObject;
+use Dotclear\App;
 use Dotclear\Helper\Html\Form\Checkbox;
 use Dotclear\Helper\Html\Form\Fieldset;
 use Dotclear\Helper\Html\Form\Label;
 use Dotclear\Helper\Html\Form\Legend;
 use Dotclear\Helper\Html\Form\Para;
 use Dotclear\Interface\Core\BlogSettingsInterface;
-use Dotclear\Interface\Core\BlogWorkspaceInterface;
 
 class BackendBehaviors
 {
@@ -58,8 +58,8 @@ class BackendBehaviors
      */
     public static function adminBeforeBlogSettingsUpdate(BlogSettingsInterface $settings): void
     {
-        $settings->blogrollpage->put('active', !empty($_POST['active']), BlogWorkspaceInterface::NS_BOOL);
-        $settings->blogrollpage->put('blogrollpage_new_window', !empty($_POST['blogrollpage_new_window']), BlogWorkspaceInterface::NS_BOOL);
+        $settings->blogrollpage->put('active', !empty($_POST['active']), App::blogWorkspace()::NS_BOOL);
+        $settings->blogrollpage->put('blogrollpage_new_window', !empty($_POST['blogrollpage_new_window']), App::blogWorkspace()::NS_BOOL);
     }
 
     /**
