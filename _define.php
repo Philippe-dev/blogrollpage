@@ -15,7 +15,7 @@ $this->registerModule(
     'Simon Richard and contributors',
     '6.4',
     [
-        'date'        => '2026-04-19T00:00:12+0100',
+        'date'        => '2026-04-28T00:00:12+0100',
         'requires' => [
             ['core', '2.36'],
             ['TemplateHelper'],
