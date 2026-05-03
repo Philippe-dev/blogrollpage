@@ -20,7 +20,7 @@ Vous pouvez utiliser le widget ou l'entrée prédéfinie de Simple Menu pour fai
 
 # *Blogroll page*
 
-## *Pré-requis*
+## *Required*
 
 *Requires Template Helper plugin.*
 
