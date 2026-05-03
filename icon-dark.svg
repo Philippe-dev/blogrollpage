@@ -111,7 +111,7 @@
      id="namedview12"
      showgrid="false"
      inkscape:zoom="6.9605824"
-     inkscape:cx="-14.007449"
+     inkscape:cx="-13.863782"
      inkscape:cy="31.031886"
      inkscape:window-x="0"
      inkscape:window-y="0"
@@ -134,16 +134,35 @@
      y="10.847458"
      id="text827" />
   <g
-     id="g829"
-     transform="matrix(0.04121616,0,0,0.04273839,8.0813965,4.6020291)"
-     style="filter:url(#filter1168)">
+     fill="none"
+     id="g16"
+     transform="matrix(0.61052363,0,0,0.71970986,9.7964698,5.5826881)">
     <path
-       d="m 128,469.33333 h 85.33333 v 85.33334 H 128 Z m 0,-170.66666 h 85.33333 V 384 H 128 Z M 128,640 h 85.33333 v 85.33333 H 128 Z m 0,-512 h 85.33333 v 85.33333 H 128 Z m 0,682.66667 h 85.33333 V 896 H 128 Z"
-       fill="#2196f3"
-       id="path2-5" />
-    <path
-       d="M 298.66667,469.33333 H 896 v 85.33334 H 298.66667 Z m 0,-170.66666 H 896 V 384 H 298.66667 Z m 0,341.33333 H 896 v 85.33333 H 298.66667 Z m 0,-512 H 896 v 85.33333 H 298.66667 Z m 0,682.66667 H 896 V 896 H 298.66667 Z"
-       fill="#2196f3"
-       id="path4-0" />
+       d="m 1.57e-4,0 h 64 v 64 h -64 z"
+       id="path2-0" />
+    <g
+       stroke-width="2"
+       transform="matrix(2.6666646,0,0,2.6666646,1.728911e-4,1.3333589)"
+       id="g14">
+      <g
+         id="g10">
+        <path
+           d="M 7,4 4.33,7 3,5.5"
+           stroke="#676e78"
+           id="path4-9" />
+        <path
+           d="M 3,11.5 4.33,13 7,10"
+           stroke="#88c200"
+           id="path6" />
+        <path
+           d="M 3,17.5 4.33,19 7,16"
+           stroke="#c44d57"
+           id="path8" />
+      </g>
+      <path
+         d="M 11,6 H 21 M 11,12 H 21 M 11,18 H 21"
+         stroke="#167bba"
+         id="path12" />
+    </g>
   </g>
 </svg>
