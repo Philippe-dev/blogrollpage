@@ -6,7 +6,7 @@
 
 Forked from Simon Richard's plugin Blogroll Page 2
 
-# Pré-requis
+## Pré-requis
 
 Nécessite le plugin Template Helper.
 
@@ -16,4 +16,16 @@ Blogroll Page vous permet d'afficher votre liste de lien (blogroll) sur une page
 
 Vous pouvez utiliser le widget ou l'entrée prédéfinie de Simple Menu pour faire un lien vers cette page.
 
-Ce plugin est fourni sous les termes de la Do What The Fuck You Want To Public License (WTFPL).
+***
+
+# *Blogroll page*
+
+## *Pré-requis*
+
+*Requires Template Helper plugin.*
+
+## *General information*
+
+*Blogroll Page allows to display your blogroll on a dedicated page, which is useful if you have a very long list of links.*
+
+*You may then use a widget or a predefined Simple Menu entry to link to your blogroll page.*
