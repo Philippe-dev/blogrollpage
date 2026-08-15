@@ -9,21 +9,25 @@
  *
  * @copyright DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE http://www.wtfpl.net/
  */
-$this->registerModule(
-    'Blogroll page',
-    'Show your blogroll on a dedicated page',
-    'Simon Richard and contributors',
-    '6.6',
-    [
-        'date'        => '2026-04-28T00:00:12+0100',
-        'requires' => [
-            ['core', '2.36'],
-            ['TemplateHelper'],
-        ],
-        'permissions' => 'My',
-        'type'        => 'plugin',
-        'settings'    => [
-        ],
-        'support'     => 'https://github.com/Philippe-dev/blogrollpage',
-    ]
-);
+declare(strict_types=1);
+
+if (isset($this) && is_object($this) && method_exists($this, 'registerModule') && isset($this->id) && is_string($this->id)) {
+    $this->registerModule(
+        'Blogroll page',
+        'Show your blogroll on a dedicated page',
+        'Simon Richard and contributors',
+        '6.7',
+        [
+            'date'     => '2026-08-15T00:00:12+0100',
+            'requires' => [
+                ['core', '2.36'],
+                ['TemplateHelper'],
+            ],
+            'permissions' => 'My',
+            'type'        => 'plugin',
+            'settings'    => [
+            ],
+            'support' => 'https://github.com/Philippe-dev/blogrollpage',
+        ]
+    );
+}
