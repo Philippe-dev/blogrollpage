@@ -87,33 +87,35 @@ class Manage
             return;
         }
 
-        $head        = '';
-        $rich_editor = App::auth()->getOption('editor');
-        $rte_flag    = true;
-        $rte_flags   = @App::auth()->prefs()->interface->rte_flags;
+        $head      = '';
+        $rte_flag  = true;
+        $rte_flags = App::auth()->prefs()->get('interface')->get('rte_flags');
         if (is_array($rte_flags) && in_array('blogrollpage', $rte_flags)) {
             $rte_flag = $rte_flags['blogrollpage'];
         }
 
         if ($rte_flag) {
-            $head = App::behavior()->callBehavior(
-                'adminPostEditor',
-                $rich_editor['xhtml'],
-                'blogrollpage',
-                ['#page_header'],
-                'xhtml'
-            ) .
-            My::jsLoad('blogrollpage.js');
+            $rich_editor = App::auth()->prefs()->get('interface')->get('editor');
+            if (is_array($rich_editor) && isset($rich_editor['xhtml'])) {
+                $head = App::behavior()->callBehavior(
+                    'adminPostEditor',
+                    $rich_editor['xhtml'],
+                    'blogrollpage',
+                    ['#page_header'],
+                    'xhtml'
+                ) .
+                My::jsLoad('blogrollpage.js');
+            }
         }
 
         $settings = My::settings();
 
-        $active                  = $settings->active;
-        $blogrollpage_new_window = $settings->blogrollpage_new_window;
-        $page_title              = $settings->page_title;
-        $page_header             = $settings->page_header;
+        $active                  = $settings->getBool('active', false);
+        $blogrollpage_new_window = $settings->getBool('blogrollpage_new_window', false);
+        $page_title              = $settings->getStr('page_title', false);
+        $page_header             = $settings->getStr('page_header', false);
 
-        if ($page_title === null) {
+        if ($page_title === '') {
             $page_title = __('Blogroll page');
         }
 
@@ -126,6 +128,8 @@ class Manage
             ]
         );
         echo App::backend()->notices()->getNotices();
+
+        $user_lang = is_string($user_lang = App::auth()->getInfo('user_lang')) ? $user_lang : 'en';
 
         // Form
 
@@ -150,7 +154,6 @@ class Manage
                         ->size(30)
                         ->maxlength(256)
                         ->value(Html::escapeHTML($page_title))
-                        //->required(true)
                         ->placeholder(__('Title'))
                         ->label((new Label(
                             __('Page title:'),
@@ -161,7 +164,7 @@ class Manage
                     (new Textarea('page_header'))
                         ->cols(30)
                         ->rows(2)
-                        ->lang(App::auth()->getInfo('user_lang'))
+                        ->lang($user_lang)
                         ->spellcheck(true)
                         ->value(Html::escapeHTML($page_header))
                         ->label((new Label(__('Blogroll description'), Label::OUTSIDE_TEXT_BEFORE))),
