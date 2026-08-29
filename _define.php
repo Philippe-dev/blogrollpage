@@ -16,9 +16,9 @@ if (isset($this) && is_object($this) && method_exists($this, 'registerModule') &
         'Blogroll page',
         'Show your blogroll on a dedicated page',
         'Simon Richard and contributors',
-        '6.8',
+        '6.9',
         [
-            'date'     => '2026-08-22T00:00:12+0100',
+            'date'     => '2026-08-29T00:00:12+0100',
             'requires' => [
                 ['core', '2.39'],
                 ['TemplateHelper'],
