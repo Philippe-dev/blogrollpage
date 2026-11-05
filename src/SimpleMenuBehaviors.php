@@ -34,9 +34,7 @@ class SimpleMenuBehaviors
     }
 
     /**
-     * @param      string               $item_type    The item type
-     * @param      string               $item_select  The item select
-     * @param      array<int, string>   $args         The arguments
+     * @param      MenuItemEdit  $menuItemEdit  The menu item edit
      *
      * @return     string
      */
