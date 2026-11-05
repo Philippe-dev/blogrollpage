@@ -54,7 +54,7 @@ class Backend
             'adminBeforeBlogSettingsUpdate' => BackendBehaviors::adminBeforeBlogSettingsUpdate(...),
             'adminRteFlagsV2'               => BackendBehaviors::adminRteFlags(...),
             'adminSimpleMenuAddType'        => SimpleMenuBehaviors::adminSimpleMenuAddType(...),
-            'adminSimpleMenuBeforeEdit'     => SimpleMenuBehaviors::adminSimpleMenuBeforeEdit(...),
+            'adminSimpleMenuBeforeEditV2'   => SimpleMenuBehaviors::adminSimpleMenuBeforeEdit(...),
         ]);
 
         if (My::checkContext(My::WIDGETS)) {

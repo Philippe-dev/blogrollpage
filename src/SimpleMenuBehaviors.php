@@ -16,6 +16,8 @@ namespace Dotclear\Plugin\blogrollpage;
 
 use ArrayObject;
 use Dotclear\App;
+use Dotclear\Helper\Html\Html;
+use Dotclear\Plugin\simpleMenu\MenuItemEdit;
 
 class SimpleMenuBehaviors
 {
@@ -38,14 +40,14 @@ class SimpleMenuBehaviors
      *
      * @return     string
      */
-    public static function adminSimpleMenuBeforeEdit($item_type, $item_select, $args): string
+    public static function adminSimpleMenuBeforeEdit(MenuItemEdit $menuItemEdit): string
     {
-        if ($item_type == 'blogrollpage') {
-            $args[0] = __('Blogroll page');
-            $args[1] = __('Show your blogroll on a dedicated page');
-            $args[2] .= App::url()->getURLFor('blogrollpage');
-        }
+        if ($menuItemEdit->getType() === 'blogrollpage') {
+            $menuItemEdit->setLabel(__('Blogroll page'));
+            $menuItemEdit->setDescription(__('Show your blogroll on a dedicated page'));
+            $menuItemEdit->setUrl(Html::stripHostURL(App::blog()->url() . App::url()->getURLFor('blogrollpage')));
 
-        return '';
+            return '';
+        }
     }
 }

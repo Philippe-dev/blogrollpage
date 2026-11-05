@@ -16,11 +16,11 @@ if (isset($this) && is_object($this) && method_exists($this, 'registerModule') &
         'Blogroll page',
         'Show your blogroll on a dedicated page',
         'Simon Richard and contributors',
-        '6.9',
+        '6.10',
         [
-            'date'     => '2026-08-29T00:00:12+0100',
+            'date'     => '2026-11-05T00:00:12+0100',
             'requires' => [
-                ['core', '2.39'],
+                ['core', '2.40'],
                 ['TemplateHelper'],
             ],
             'permissions' => 'My',

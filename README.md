@@ -1,8 +1,8 @@
 # Page de liens
 
-![Release 6.9](https://img.shields.io/badge/Release-6.9-b7d7ee)
+![Release 6.10](https://img.shields.io/badge/Release-6.10-b7d7ee)
 ![WTFPL License](https://img.shields.io/badge/License-WTFPL-a5cc52)
-![Dotclear 2.39](https://img.shields.io/badge/Dotclear-2.39-137bbb)
+![Dotclear 2.40](https://img.shields.io/badge/Dotclear-2.40-137bbb)
 
 Forked from Simon Richard's plugin Blogroll Page 2
 
